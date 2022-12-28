@@ -32,3 +32,9 @@ border: 1px solid rgb(241, 240, 240);
   grid-column: span 3;
   grid-row: span 3;
 } */
+
+.note-input-txt-card{
+  width: 200px;
+  height: 300px;
+  border: 1px solid gray;
+}

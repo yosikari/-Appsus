@@ -28,7 +28,10 @@ function DynamicCmp(props) {//props is the note.type
   }
 }
 function NoteTxt(props) {
-  return <div>
+  return <div className="prev-note-txt-card" style={{ backgroundColor: props.note.style.backgroundColor }} >
+    {/* <h2>style={{ color: props.note.style.backgroundColor }}</h2> */}
+    <h2>{props.note.style.backgroundColor}</h2>
+
     <h4> {props.note.info.txt}</h4>
     pinned: <h6> {props.note.isPinned}</h6>
   </div>

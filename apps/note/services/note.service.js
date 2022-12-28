@@ -35,7 +35,10 @@ function _createNotes() {
         isPinned: true,
         info: {
           txt: "Fullstack me Baby!"
-        }
+        },
+        style: {
+          backgroundColor: "#ffffff"
+        },
       },
       {
         id: "n102",
@@ -45,20 +48,10 @@ function _createNotes() {
           title: "our cruise",
         },
         style: {
-          backgroundColor: "#00d"
-        }
-      },
-      {
-        id: "n104",
-        type: "note-img",
-        info: {
-          url: "../../../img/maldives.jpg",
-          title: "our vacation",
+          backgroundColor: "#ffffff"
         },
-        style: {
-          backgroundColor: "#00d"
-        }
       },
+
       {
         id: "n103",
         type: "note-todo",
@@ -70,6 +63,9 @@ function _createNotes() {
             { txt: "Coding power", doneAt: 187111111 }
           ]
         },
+        style: {
+          backgroundColor: "#ffffff"
+        },
 
       },
       {
@@ -78,7 +74,9 @@ function _createNotes() {
         isPinned: true,
         info: {
           txt: "Fullstack me Baby!"
-        }
+        }, style: {
+          backgroundColor: "#ffffff"
+        },
       },
       {
         id: "n106",
@@ -88,8 +86,8 @@ function _createNotes() {
           title: "our cruise",
         },
         style: {
-          backgroundColor: "#00d"
-        }
+          backgroundColor: "#ffffff"
+        },
       },
       {
         id: "n107",
@@ -99,8 +97,8 @@ function _createNotes() {
           title: "our vacation",
         },
         style: {
-          backgroundColor: "#00d"
-        }
+          backgroundColor: "#ffffff"
+        },
       },
       {
         id: "n108",
@@ -113,6 +111,9 @@ function _createNotes() {
             { txt: "Coding power", doneAt: 187111111 }
           ]
         },
+        style: {
+          backgroundColor: "#ffffff"
+        },
 
       },
       {
@@ -121,7 +122,9 @@ function _createNotes() {
         isPinned: true,
         info: {
           txt: "Fullstack me Baby!"
-        }
+        }, style: {
+          backgroundColor: "#ffffff"
+        },
       },
       {
         id: "n110",
@@ -131,8 +134,8 @@ function _createNotes() {
           title: "our cruise",
         },
         style: {
-          backgroundColor: "#00d"
-        }
+          backgroundColor: "#ffffff"
+        },
       },
       {
         id: "n111",
@@ -142,8 +145,8 @@ function _createNotes() {
           title: "our vacation",
         },
         style: {
-          backgroundColor: "#00d"
-        }
+          backgroundColor: "#ffffff"
+        },
       },
       {
         id: "n112",
@@ -156,6 +159,9 @@ function _createNotes() {
             { txt: "Coding power", doneAt: 187111111 }
           ]
         },
+        style: {
+          backgroundColor: "#ffffff"
+        },
 
       },
       {
@@ -164,7 +170,10 @@ function _createNotes() {
         isPinned: true,
         info: {
           txt: "Fullstack me Baby!"
-        }
+        },
+        style: {
+          backgroundColor: "#A3F3FF"
+        },
       },
       {
         id: "n114",
@@ -174,8 +183,8 @@ function _createNotes() {
           title: "our cruise",
         },
         style: {
-          backgroundColor: "#00d"
-        }
+          backgroundColor: "#ffffff"
+        },
       },
       {
         id: "n104",
@@ -185,8 +194,8 @@ function _createNotes() {
           title: "our vacation",
         },
         style: {
-          backgroundColor: "#00d"
-        }
+          backgroundColor: "#ffffff"
+        },
       },
       {
         id: "n115",
@@ -198,6 +207,9 @@ function _createNotes() {
             { txt: "Driving liscence", doneAt: null },
             { txt: "Coding power", doneAt: 187111111 }
           ]
+        },
+        style: {
+          backgroundColor: "#ffffff"
         },
 
       }
@@ -228,7 +240,7 @@ function getEmptyNoteTxt() {
     },
     isPinned: false,
     style: {
-      backgroundColor: "#5f9ea0"
+      backgroundColor: "#ffffff"
     },
 
   }

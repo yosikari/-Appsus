@@ -32,6 +32,7 @@ function DynamicCmp(props) {//props is the note.type
 function NoteTxt(props) {
   console.log('txt', props)
   const [noteToEdit, setNoteToEdit] = useState(noteService.getEmptyNoteTxt())
+  const [colorPicker, setColorPiker] = useState()
   const navigate = useNavigate()
 
   function handleChange({ target }) {
@@ -48,7 +49,7 @@ function NoteTxt(props) {
       if (field === 'color') {
         return {
           ...prevNoteToEdit,
-          info: { ...prevNoteToEdit.style, backgroundColor: value }
+          info: { ...prevNoteToEdit.style, backgroundColor: colorPicker }
         }
       }
       return ({ ...prevBookToEdit, [field]: value })
@@ -59,13 +60,15 @@ function NoteTxt(props) {
 
   function onSaveNote(ev) {
     ev.preventDefault()
-    noteService.save(noteToEdit).then(() => loadNotes())
+    noteService.save(noteToEdit).then(() => props.loadNotes())
     // console.log('note saved', note);
-    props.loadNotes()
+    // props.loadNotes()
     // showSuccessMsg('note saved!')
     navigate('/note')
   }
-  return <div>
+  return <div className="note-input-txt-card"
+  //  style={{ backgroundColor: noteToEdit.style.backgroundColor }}
+  >
     <form onSubmit={onSaveNote}>
       <label htmlFor="text">text : </label>
       <input type="text"
@@ -75,14 +78,20 @@ function NoteTxt(props) {
         value={noteToEdit.info.txt}
         onChange={handleChange}
       />
-      <input type="color"
+      {/* <input type="color"
         name="color"
         id="color"
 
         value={noteToEdit.style.backgroundColor.hex}
         onChange={handleChange}
-      />
+      /> */}
+/* <input type="color"
+        name="color"
+        id="color"
 
+        value={colorPicker}
+        onChange={(e)=>setColorPiker(e.target.value)}
+      /> 
 
       <div>
         <button>{noteToEdit.id ? 'Save' : 'Add'}</button>
