@@ -36,7 +36,7 @@ export function MailDetails() {
     function onRemoveMail(mailId) {
         mailService.remove(mailId).then(() => {
             if (nextMailId) onNextMail()
-            // showSuccessMsg('Mail removed')
+            showSuccessMsg('Mail removed')
         })
             .catch((err) => {
                 console.log('Had issues removing', err)

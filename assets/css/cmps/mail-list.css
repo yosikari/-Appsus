@@ -1,0 +1,15 @@
+.send-btn {
+    position: fixed;
+    bottom: 2em;
+    right: 2em;
+    width: 7em;
+    height: 7em;
+    border-radius: 50%;
+    background-color: #fff;
+    transition: 1s;
+}
+
+.send-btn:hover {
+cursor: pointer;
+background-color: rgb(255, 197, 197);
+}
