@@ -5,9 +5,8 @@ export function NoteIndex() {
     return <div>note app
         <nav>
             <Link to="/note">Index</Link> |
-            <Link to="/note/remainder">remainder</Link> |
-            <Link to="/note/archive">archive</Link>
-            <Link to="/note/trash">trash</Link>
+            <Link to="/note/add">add</Link> |
+
         </nav>
         <div className="nested-route">
             <Outlet />

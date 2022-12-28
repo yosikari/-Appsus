@@ -1,3 +1,4 @@
-export function Mail() {
-    return <div>mail app</div>
+export function MailCompose() {
+  return <div>mail compose</div>
 }
+
