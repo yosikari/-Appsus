@@ -48,12 +48,11 @@ export function MailCompose({ onSetSendMail, onSetMails }) {
         />
         <hr />
 
-        <input className="compose-txt" type="txt"
+        <textarea className="compose-txt" type="textarea"
           id="txt"
           name="txt"
           value={txt}
           onChange={() => setTxt(event.target.value)}
-
         />
 
         <button>Send</button>

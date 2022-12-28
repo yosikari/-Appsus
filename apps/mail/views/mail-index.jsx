@@ -6,7 +6,8 @@ import { MailList } from "../cmps/mail-list.jsx";
 import { mailService } from '../services/mail.service.js'
 import { MailCompose } from "../cmps/mail-compose.jsx";
 
-// import { eventBusService, showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
+import { eventBusService, showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js'
+import { UserMsg } from "../../../cmps/user-msg.jsx";
 
 
 export function MailIndex() {
@@ -39,7 +40,7 @@ export function MailIndex() {
         mailService.remove(mailId).then(() => {
             const updatedMails = mails.filter(mail => mail.id !== mailId)
             setMails(updatedMails)
-            // showSuccessMsg('Mail removed')
+            showSuccessMsg('Mail removed')
         })
             .catch((err) => {
                 console.log('Had issues removing', err)
@@ -60,6 +61,7 @@ export function MailIndex() {
             {!mails.length && <div>No mails to show...</div>}
             {!isSendMail && <button className="send-btn" onClick={() => { setSendMail(!isSendMail) }}>SendMail</button>}
             {isSendMail && <MailCompose onSetSendMail={setSendMail} onSetMails={loadMails} />}
+            <UserMsg />
         </div>
     </section>
 

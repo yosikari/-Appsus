@@ -55,7 +55,7 @@ function save(mail) {
     }
 }
 
-function getEmptyMail(from = '', title = '', txtBody = '', isRecived = isRecived, isMarked = false, isRead = false) {
+function getEmptyMail(from = '', title = '', txtBody = '', isRecived = false, isMarked = false, isRead = false) {
     return {
         from: from,
         title: title,

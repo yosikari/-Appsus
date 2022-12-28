@@ -53,7 +53,7 @@ input {
 }
 
 .compose-form:focus,
-input:focus {
+textarea:focus {
     outline: none;
 }
 
@@ -66,7 +66,13 @@ hr {
 }
 
 .compose-txt {
-    height: 20vh;
+    align-self: center;
+    height: 90%;
+    min-width: 90%;
+    max-width: 90%;
+    border: none;
+    outline: none;
+    resize: none;
 }
 
 .compose-form button {
