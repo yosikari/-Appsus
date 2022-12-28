@@ -18,6 +18,11 @@ export function MailIndex() {
         loadMails()
     }, [filterBy])
 
+    useEffect(() => {
+        setIsLoading(true)
+        loadMails()
+    }, [])
+
     function onSetFilter(filterByFromFilter) {
         setFilterBy(filterByFromFilter)
     }

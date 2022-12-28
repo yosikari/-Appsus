@@ -37,13 +37,13 @@ function getNextMailId(mailId) {
         .then(mails => {
             var idx = mails.findIndex(mail => mail.id === mailId)
             if (idx === mails.length - 1) idx = -1
-            console.log(mails[idx + 1].id)
             return mails[idx + 1].id
         })
 }
 
 
 function remove(mailId) {
+    if (!mailId) return
     return storageService.remove(MAIL_KEY, mailId)
 }
 
