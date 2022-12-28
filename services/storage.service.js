@@ -1,4 +1,4 @@
-// export const storageServiceLocal = {
+// export const storageService = {
 //     loadFromStorage,
 //     saveToStorage
 // }
