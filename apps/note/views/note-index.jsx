@@ -3,6 +3,7 @@ const { useState, useEffect } = React
 const { Outlet, Link } = ReactRouterDOM
 import { NoteList } from "../cmps/note-list.jsx"
 import { noteService } from "../services/note.service.js"
+// import { showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js';
 
 export function NoteIndex() {
     const [isLoading, setIsLoading] = useState(false)
@@ -19,7 +20,13 @@ export function NoteIndex() {
         })
 
     }
-    function onRemoveNote() {
+    function onRemoveNote(noteId) {
+        noteService.remove(noteId)
+            .then(() => {
+                const updatedNotes = notes.filter(note => note.id !== noteId)
+                setNotes(updatedNotes)
+                // showSuccessMsg('note removed')
+            })
         console.log('remove')
     }
     return <div>note app

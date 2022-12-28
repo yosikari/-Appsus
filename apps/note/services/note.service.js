@@ -4,7 +4,9 @@ import { utilService } from "../../../services/util.service.js"
 const NOTE_KEY = 'noteDB'
 _createNotes()
 export const noteService = {
-  query
+  query,
+  remove,
+  get
 }
 
 function query() {
@@ -12,6 +14,10 @@ function query() {
 }
 function remove(noteId) {
   return storageService.remove(NOTE_KEY, noteId)
+}
+function get(noteId) {
+  return storageService.get(NOTE_KEY, noteId)
+
 }
 function _createNotes() {
   let notes = utilService.loadFromStorage(NOTE_KEY)
@@ -67,3 +73,6 @@ function _createNotes() {
   }
 }
 
+function onGoBack() {
+  navigate('/note')
+}
