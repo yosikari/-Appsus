@@ -19,7 +19,6 @@ export function MailIndex() {
     }, [filterBy])
 
     useEffect(() => {
-        setIsLoading(true)
         loadMails()
     }, [])
 
