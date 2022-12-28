@@ -6,7 +6,13 @@ _createNotes()
 export const noteService = {
   query,
   remove,
-  get
+  onGoBack,
+  get,
+  getEmptyNoteTxt,
+  getEmptyNoteImg,
+  getEmptyNoteTodo,
+  save,
+
 }
 
 function query() {
@@ -204,7 +210,58 @@ function _createNotes() {
     utilService.saveToStorage(NOTE_KEY, notes)
   }
 }
-
+function save(note) {
+  if (note.id) {
+    return storageService.put(NOTE_KEY, note)
+  } else {
+    return storageService.post(NOTE_KEY, note)
+  }
+}
 function onGoBack() {
   navigate('/note')
+}
+function getEmptyNoteTxt() {
+  let note = {
+    type: "note-txt",
+    info: {
+      txt: ""
+    },
+    isPinned: false,
+    style: {
+      backgroundColor: "#5f9ea0"
+    },
+
+  }
+  return note
+}
+function getEmptyNoteImg() {
+  let note = {
+    type: "note-img",
+    info: {
+      url: "../../../img/cruise.jpg",
+      title: "",
+    },
+    isPinned: false,
+    style: {
+      backgroundColor: "#00d"
+    },
+  }
+  console.log(note)
+  return note
+}
+function getEmptyNoteTodo() {
+  let note = {
+    type: "note-todo",
+    info: {
+      label: "todos",
+      todos: [
+        { txt: "plan it", doneAt: null },
+        { txt: "fo the first task", doneAt: 187111111 }]
+    },
+    isPinned: false,
+    style: {
+      backgroundColor: "#00d"
+    },
+  }
+  return note
 }
