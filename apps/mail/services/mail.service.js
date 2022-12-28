@@ -55,11 +55,12 @@ function save(mail) {
     }
 }
 
-function getEmptyMail(from = '', title = '', txtBody = '', isMarked = false, isRead = false) {
+function getEmptyMail(from = '', title = '', txtBody = '', isRecived = isRecived, isMarked = false, isRead = false) {
     return {
         from: from,
         title: title,
         txtBody: txtBody,
+        isRecived: isRecived,
         isMarked: isMarked,
         isRead: isRead
     }
@@ -73,14 +74,14 @@ function _createMails() {
     let mails = utilService.loadFromStorage(MAIL_KEY)
     if (!mails || !mails.length) {
         mails = []
-        mails.push(_createMail('AliExpress', 'Don\'t miss this SALE', `asdadsasd asdsasddasasd sdsdasdasda asdsadsdasad sadsadasdasd sadasdsadsda asdsdasdasda sadsdasdasda sadsdasdasad sadsdasadsdasad asdasdsdasadasd asdasdsadsdasad sdasdasdasdasad THANK YOU :)`))
-        mails.push(_createMail('Ebay.com', 'SALE SALE SALE!!!', `asdadsasd asdsasddasasd sdsdasdasda asdsadsdasad sadsadasdasd sadasdsadsda asdsdasdasda sadsdasdasda sadsdasdasad sadsdasadsdasad asdasdsdasadasd asdasdsadsdasad sdasdasdasdasad THANK YOU :)`))
-        mails.push(_createMail('Puki Puk', 'Hello Muki', `asdadsasd asdsasddasasd sdsdasdasda asdsadsdasad sadsadasdasd sadasdsadsda asdsdasdasda sadsdasdasda sadsdasdasad sadsdasadsdasad asdasdsdasadasd asdasdsadsdasad sdasdasdasdasad THANK YOU :)`))
-        mails.push(_createMail('AliExpress', 'Your order has being shipped', `asdadsasd asdsasddasasd sdsdasdasda asdsadsdasad sadsadasdasd sadasdsadsda asdsdasdasda sadsdasdasda sadsdasdasad sadsdasadsdasad asdasdsdasadasd asdasdsadsdasad sdasdasdasdasad THANK YOU :)`))
-        mails.push(_createMail('Puki Puk', 'Hi Muki lets play!', `asdadsasd asdsasddasasd sdsdasdasda asdsadsdasad sadsadasdasd sadasdsadsda asdsdasdasda sadsdasdasda sadsdasdasad sadsdasadsdasad asdasdsdasadasd asdasdsadsdasad sdasdasdasdasad THANK YOU :)`))
-        mails.push(_createMail('AliExpress', 'Your order has being shipped', `asdadsasd asdsasddasasd sdsdasdasda asdsadsdasad sadsadasdasd sadasdsadsda asdsdasdasda sadsdasdasda sadsdasdasad sadsdasadsdasad asdasdsdasadasd asdasdsadsdasad sdasdasdasdasad THANK YOU :)`))
-        mails.push(_createMail('AliExpress', 'Your order has being shipped', `asdadsasd asdsasddasasd sdsdasdasda asdsadsdasad sadsadasdasd sadasdsadsda asdsdasdasda sadsdasdasda sadsdasdasad sadsdasadsdasad asdasdsdasadasd asdasdsadsdasad sdasdasdasdasad THANK YOU :)`))
-        mails.push(_createMail('Luki Lak', 'new job for you Muki', `asdadsasd asdsasddasasd sdsdasdasda asdsadsdasad sadsadasdasd sadasdsadsda asdsdasdasda sadsdasdasda sadsdasdasad sadsdasadsdasad asdasdsdasadasd asdasdsadsdasad sdasdasdasdasad THANK YOU :)`))
+        mails.push(_createMail('AliExpress', 'Don\'t miss this SALE', `asdadsasd asdsasddasasd sdsdasdasda asdsadsdasad sadsadasdasd sadasdsadsda asdsdasdasda sadsdasdasda sadsdasdasad sadsdasadsdasad asdasdsdasadasd asdasdsadsdasad sdasdasdasdasad THANK YOU :)`, true))
+        mails.push(_createMail('Ebay.com', 'SALE SALE SALE!!!', `asdadsasd asdsasddasasd sdsdasdasda asdsadsdasad sadsadasdasd sadasdsadsda asdsdasdasda sadsdasdasda sadsdasdasad sadsdasadsdasad asdasdsdasadasd asdasdsadsdasad sdasdasdasdasad THANK YOU :)`, true))
+        mails.push(_createMail('Puki Puk', 'Hello Muki', `asdadsasd asdsasddasasd sdsdasdasda asdsadsdasad sadsadasdasd sadasdsadsda asdsdasdasda sadsdasdasda sadsdasdasad sadsdasadsdasad asdasdsdasadasd asdasdsadsdasad sdasdasdasdasad THANK YOU :)`, true))
+        mails.push(_createMail('AliExpress', 'Your order has being shipped', `asdadsasd asdsasddasasd sdsdasdasda asdsadsdasad sadsadasdasd sadasdsadsda asdsdasdasda sadsdasdasda sadsdasdasad sadsdasadsdasad asdasdsdasadasd asdasdsadsdasad sdasdasdasdasad THANK YOU :)`, true))
+        mails.push(_createMail('Puki Puk', 'Hi Muki lets play!', `asdadsasd asdsasddasasd sdsdasdasda asdsadsdasad sadsadasdasd sadasdsadsda asdsdasdasda sadsdasdasda sadsdasdasad sadsdasadsdasad asdasdsdasadasd asdasdsadsdasad sdasdasdasdasad THANK YOU :)`, true))
+        mails.push(_createMail('AliExpress', 'Your order has being shipped', `asdadsasd asdsasddasasd sdsdasdasda asdsadsdasad sadsadasdasd sadasdsadsda asdsdasdasda sadsdasdasda sadsdasdasad sadsdasadsdasad asdasdsdasadasd asdasdsadsdasad sdasdasdasdasad THANK YOU :)`, true))
+        mails.push(_createMail('AliExpress', 'Your order has being shipped', `asdadsasd asdsasddasasd sdsdasdasda asdsadsdasad sadsadasdasd sadasdsadsda asdsdasdasda sadsdasdasda sadsdasdasad sadsdasadsdasad asdasdsdasadasd asdasdsadsdasad sdasdasdasdasad THANK YOU :)`, true))
+        mails.push(_createMail('Luki Lak', 'new job for you Muki', `asdadsasd asdsasddasasd sdsdasdasda asdsadsdasad sadsadasdasd sadasdsadsda asdsdasdasda sadsdasdasda sadsdasdasad sadsdasadsdasad asdasdsdasadasd asdasdsadsdasad sdasdasdasdasad THANK YOU :)`, true))
 
         utilService.saveToStorage(MAIL_KEY, mails)
     }
@@ -95,8 +96,8 @@ function _createMail(from, title, txtBody) {
 
 
 //todo move to utils! 
-function getDateNow(){
-    let today  = new Date()
-    return(today.toLocaleDateString("en-US"))
+function getDateNow() {
+    let today = new Date()
+    return (today.toLocaleDateString("en-US"))
 
 }

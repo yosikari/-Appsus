@@ -15,6 +15,6 @@ export function MailList({ mails, onRemoveMail }) {
                 </div>
             </li>)
         }
-        <Link to={`/mail/mail-compose`}><button className="send-btn">SendMail</button></Link>
+
     </ul>
 }
