@@ -11,7 +11,21 @@ const { useNavigate, useParams, Link } = ReactRouterDOM
 export function NoteTxt(props) {
   const [noteToEdit, setNoteToEdit] = useState(noteService.getEmptyNoteTxt())
   const navigate = useNavigate()
+  const { noteId } = useParams()
 
+  useEffect(() => {
+    if (!noteId) return
+    loadNote()
+  }, [])
+
+  function loadNote() {
+    noteService.get(noteId)
+      .then((note) => setNoteToEdit(note))
+      .catch((err) => {
+        console.log('Had issues in note details', err)
+        navigate('/note')
+      })
+  }
   function handleChange({ target }) {
     let { value, type, name: field } = target
     //     value = type === 'number' ? +value : value

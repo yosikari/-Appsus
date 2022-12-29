@@ -1,10 +1,12 @@
-const { useState, useEffect } = React
+const { useState, useEffect, useRef } = React
 const { useNavigate, useParams, Link } = ReactRouterDOM
 import { noteService } from "../services/note.service.js"
 
 export function NoteImg(props) {
 
   const [noteToEdit, setNoteToEdit] = useState(noteService.getEmptyNoteImg())
+  const [imgSrc, setImg] = useState('')
+
   const navigate = useNavigate()
 
   function handleChange({ target }) {
@@ -21,6 +23,12 @@ export function NoteImg(props) {
         return {
           ...prevNoteToEdit,
           info: { ...prevNoteToEdit.info, url: value },
+        }
+      }
+      if (field === 'file') {
+        return {
+          ...prevNoteToEdit,
+          info: { ...prevNoteToEdit.info, url: base64 },
         }
       }
       if (field === 'checkbox') {
@@ -45,6 +53,42 @@ export function NoteImg(props) {
     // showSuccessMsg('note saved!')
     navigate('/note')
   }
+
+
+  //---------------UPLOAD IMG TO BASE 64-----------------------
+  const inputRef = useRef(null);
+
+  const handleClick = () => {
+    inputRef.current.click();
+  }
+
+  const handleFileChange = event => {
+
+    const file = event.target.files[0];
+    getBase64(file).then(base64 => {
+      setImg(base64)
+      console.log(base64)
+      setNoteToEdit(prevNoteToEdit => ({
+        ...prevNoteToEdit,
+        info: { ...prevNoteToEdit.info, url: base64 },
+      }))
+    })
+
+  }
+
+  const getBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = error => reject(error);
+      reader.readAsDataURL(file);
+    })
+  }
+
+  //-----------------------------------------------------------
+
+
+
   return <div className="note-input-txt-card">
     <form onSubmit={onSaveNote}>
       <label htmlFor="text">Title : </label>
@@ -63,6 +107,17 @@ export function NoteImg(props) {
         value={noteToEdit.info.url}
         onChange={handleChange}
       />
+      <div>
+        <input
+          name='file'
+          style={{ display: 'none' }}
+          ref={inputRef}
+          type="file"
+          onChange={handleFileChange}
+        />
+      </div>
+      <button className="img-btn" onClick={handleClick}><i className="fa-regular fa-image"></i></button>
+      {imgSrc && <img className="note-add-img" src={imgSrc} />}
       <select onChange={handleChange} name="colors" id="colors" multiple>
         <option style={{ backgroundColor: '#fbf8cc' }} value="#fbf8cc"></option>
         <option style={{ backgroundColor: '#fde4cf' }} value="#fde4cf"></option>

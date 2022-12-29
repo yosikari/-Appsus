@@ -11,6 +11,8 @@ import { MailDetails } from "./apps/mail/cmps/mail-details.jsx"
 import { NoteDetails } from "./apps/note/views/note-details.jsx"
 import { NoteEdit } from "./apps/note/views/note-edit.jsx"
 import { NoteAddForm } from "./apps/note/views/note-add-form.jsx"
+import { NoteTxt } from "./apps/note/views/note-txt.jsx"
+import { NoteImg } from "./apps/note/views/note-img.jsx"
 
 
 
@@ -29,8 +31,9 @@ export function App() {
                 <Route element={<NoteIndex />} path="/note" >
                     <Route element={<NoteAddForm />} path="/note/add" />
                 </Route>
-                <Route element={<NoteEdit />} path="/note/edit" />
-                <Route element={<NoteEdit />} path="/note/edit/:noteId" />
+                <Route element={<NoteAddForm />} path="/note/edit/" />
+                <Route element={<NoteTxt />} path="/note/edit/txt/:noteId" />
+                <Route element={<NoteImg />} path="/note/edit/img/:noteId" />
                 <Route element={<NoteDetails />} path="/note/:noteId" />
             </Routes>
         </section>

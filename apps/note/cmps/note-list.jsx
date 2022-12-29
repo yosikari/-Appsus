@@ -10,7 +10,9 @@ export function NoteList({ notes, onRemoveNote }) {
                 <div>
                     <button onClick={() => onRemoveNote(note.id)}>X</button>
                     <button> <Link to={`/note/${note.id}`}>Details</Link> </button>
-                    <button> <Link to={`/note/edit/${note.id}`}> Edit</Link> </button>
+                    {note.type === 'note-txt'}&&<button><Link to={`/note/edit/txt/${note.id}`}>Edit</Link></button>
+                    {note.type === 'note-img'}&&<button><Link to={`/note/edit/img/${note.id}`}>Edit</Link></button>
+
                 </div>
             </li>)
         }

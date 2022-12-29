@@ -34,7 +34,7 @@ export function NoteDetails() {
     <h3> {note.info.title}</h3>
     <img src={note.info.url} />
     <button onClick={onGoBack}>Go Back</button>
-    <button><Link to={`/note/edit/${note.id}`}>Edit</Link></button>
+    {note.type === 'note-txt'}&&<button><Link to={`/note/edit/txt/${note.id}`}>Edit</Link></button>
 
   </section>
 }

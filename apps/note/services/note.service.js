@@ -230,6 +230,7 @@ function _createNotes() {
     utilService.saveToStorage(NOTE_KEY, notes)
   }
 }
+
 function save(note) {
   if (note.id) {
     return storageService.put(NOTE_KEY, note)
