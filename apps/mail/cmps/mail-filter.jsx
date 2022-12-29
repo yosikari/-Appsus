@@ -2,7 +2,7 @@ const { useState, useEffect, useRef } = React
 
 import { mailService } from "../services/mail.service.js"
 
-export function MailFilter({ onSetFilter }) {
+export function MailFilter({ onSetFilter, onSetSearchType }) {
     const [filterByToEdit, setFilterByToEdit] = useState(mailService.getDefaultFilter())
     const elInputRef = useRef(null)
 
@@ -22,27 +22,32 @@ export function MailFilter({ onSetFilter }) {
         onSetFilter(filterByToEdit)
     }
 
+    const [searchBy, setSearchBy] = useState('title')
+    useEffect(() => {
+        onSetSearchType(searchBy)
+    }, [searchBy])
+
     return <section className="book-filter full main-layout">
 
+
+        <section className="filter-btns" onChange={(ev)=>{setSearchBy(ev.target.value)}}>
+            <label htmlFor="title">by title</label><br />
+            <input className="filter-title-btn" name="search-by" type="radio" id="title" value="title" />
+
+            <label htmlFor="from">by sender</label><br />
+            <input className="filter-from-btn" name="search-by" type="radio" id="from" value="from"  />
+
+            <label htmlFor="date">by date</label><br />
+            <input className="filter-date-btn" name="search-by" type="radio" id="date" value="date"  />
+        </section>
 
 
         <form onSubmit={onSubmitFilter}>
 
-            {/* <section className="filter-btns">
-            <label for="title">by title</label><br />
-            <input className="filter-title-btn" type="radio" id="title" value="title" />
-
-            <label for="from">by sender</label><br />
-            <input className="filter-from-btn" type="radio" id="from"  value="from" />
-
-            <label for="date">by date</label><br />
-            <input className="filter-date-btn" type="radio" id="date" value="date" />
-            </section> */}
-
             <input type="text"
                 id="title"
                 name="txt"
-                placeholder="By title"
+                placeholder={searchBy}
                 value={filterByToEdit.txt}
                 onChange={handleChange}
                 ref={elInputRef}

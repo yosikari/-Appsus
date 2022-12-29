@@ -16,11 +16,12 @@ export function MailIndex() {
     const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter())
     const [mails, setMails] = useState([])
     const [isSendMail, setSendMail] = useState(false)
+    const [searchType, setSearchType] = useState(false)
 
     useEffect(() => {
         setIsLoading(true)
         loadMails()
-    }, [filterBy])
+    }, [filterBy, searchType])
 
     useEffect(() => {
         loadMails()
@@ -29,9 +30,12 @@ export function MailIndex() {
     function onSetFilter(filterByFromFilter) {
         setFilterBy(filterByFromFilter)
     }
+    function onSetSearchType(searchType) {
+        setSearchType(searchType)
+    }
 
     function loadMails() {
-        mailService.query(filterBy).then(mailsToUpdate => {
+        mailService.query(filterBy, searchType).then(mailsToUpdate => {
             setMails(mailsToUpdate)
             setIsLoading(false)
         })
@@ -64,7 +68,7 @@ export function MailIndex() {
 
     return <section className="mail-index">
         <div>
-            <MailFilter onSetFilter={onSetFilter} />
+            <MailFilter onSetFilter={onSetFilter} onSetSearchType={onSetSearchType} />
             {/* <Link to="/mail/compose"><button>Send Mail</button></Link> */}
 
             {!isLoading && <MailList mails={mails} onRemoveMail={onRemoveMail} onMarkMail={onMarkMail} />}

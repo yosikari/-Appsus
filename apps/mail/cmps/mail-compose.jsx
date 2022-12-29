@@ -34,7 +34,6 @@ export function MailCompose({ onSetSendMail, onSetMails }) {
     const file = event.target.files[0];
     getBase64(file).then(base64 => {
       setImg(base64)
-      console.log(base64)
     })
   }
 
