@@ -57,6 +57,7 @@ export function MailDetails() {
         <h1>{mail.title}</h1>
         <h5>at: {mail.date} | from: {mail.from}</h5>
         <p>{mail.txtBody}</p>
+        <div>{mail.imgSrc&&<img className="mail-details-img" src={mail.imgSrc} alt="" />}</div>
 
         <button onClick={() => onRemoveMail(mailId)}><i className="fa-regular fa-trash-can"></i></button>
         <button onClick={() => onNextMail()}><i className="fa-solid fa-angles-right"></i></button>

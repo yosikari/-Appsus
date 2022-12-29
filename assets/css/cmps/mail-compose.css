@@ -76,7 +76,7 @@ hr {
     resize: none;
 }
 
-.compose-form button {
+.compose-form .send-btn {
     position: absolute;
     bottom: .3em;
     right: .3em;
@@ -89,7 +89,37 @@ hr {
     border: none;
 }
 
-.compose-form button:hover {
+.compose-form .send-btn:hover {
     cursor: pointer;
+    background-color: rgb(11, 87, 193);
+    border-radius: 10em;
+    width: 6em;
+}
+
+.img-preview{
+    display: block;
+    position: absolute;
+    bottom: 3em;
+    height: 7em;
+    object-fit:contain;
+}
+
+.compose-btns{
+    position: absolute;
+    bottom: .3em;
+    left: .3em;
+    display:flex;
+}
+
+.img-btn{
+
+}
+
+.delete-btn{
+
+}
+
+.stiker-btn{
+
 
 }

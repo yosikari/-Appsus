@@ -5,7 +5,7 @@ import { NoteList } from "../cmps/note-list.jsx"
 import { noteService } from "../services/note.service.js"
 import { NoteAddForm } from "./note-add-form.jsx"
 // import UploadAndDisplayImage from "../cmps/uploadImg.jsx"
-import { NoteAdd } from "./note-add.jsx"
+// import { NoteAdd } from "./note-add.jsx"
 // import { showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js';
 
 export function NoteIndex() {

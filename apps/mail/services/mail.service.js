@@ -55,14 +55,16 @@ function save(mail) {
     }
 }
 
-function getEmptyMail(from = '', title = '', txtBody = '', isRecived = false, isMarked = false, isRead = false) {
+function getEmptyMail(from = '', title = '', txtBody = '', isRecived = false, imgSrc='',isMarked = false, isRead = false) {
     return {
         from: from,
         title: title,
         txtBody: txtBody,
         isRecived: isRecived,
+        imgSrc: imgSrc,
         isMarked: isMarked,
-        isRead: isRead
+        isRead: isRead,
+        date: getDateNow()
     }
 }
 
@@ -90,7 +92,6 @@ function _createMails() {
 function _createMail(from, title, txtBody) {
     const mail = getEmptyMail(from, title, txtBody)
     mail.id = utilService.makeId()
-    mail.date = getDateNow()
     return mail
 }
 

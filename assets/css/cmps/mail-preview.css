@@ -2,46 +2,45 @@
     padding: 1em;
     max-height: 2em;
     display: grid;
-    grid-template-columns: 4fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 3fr 1fr 0.1fr;
+    grid-template-rows: 1fr;
     grid-template-areas:
-        "from date"
-        "title title"
-        "txt txt";
-
+        "from title date txt";
 }
 
-/* .mail-preview:hover{
-    cursor: pointer;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-} */
-
 .mail-title {
-    grid-area: "title";
+    grid-area: title;
 
 }
 
 .mail-from {
-    grid-area: "from";
+    grid-area: from;
 }
 
 .mail-txt {
-    grid-area: "txt";
+    grid-area: txt;
     overflow: hidden;
 }
 
 .mail-date {
-    grid-area: "date";
+    grid-area: date;
 }
 
 
 .mail-preview.active {
     max-height: 6em;
     background-color: rgb(242, 246, 252);
+
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 3fr;
+    grid-template-areas:
+        "from from date"
+        "title title title"
+        "txt txt txt";
+
 }
 
 
-.mail-preview:hover .mail-date{
+.mail-preview:hover .mail-date {
     display: none;
 }
-

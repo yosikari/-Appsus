@@ -1,0 +1,15 @@
+.filter-btns{
+    display: flex;
+}
+
+
+.filter-title-btn,.filter-from-btn,.filter-date-btn{
+width: 2em;
+}
+
+.filter-title-btn{
+}
+
+.filter-from-btn{}
+
+.filter-date-btn{}

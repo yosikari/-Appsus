@@ -1,13 +1,14 @@
 const { useState, useEffect } = React
 const { Link } = ReactRouterDOM
 
+import { mailService } from '../services/mail.service.js'
+import { eventBusService, showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js'
+
+import { UserMsg } from "../../../cmps/user-msg.jsx";
+import { MailFilter } from "../cmps/mail-filter.jsx";
+import { MailCompose } from "../cmps/mail-compose.jsx";
 import { MailList } from "../cmps/mail-list.jsx";
 
-import { mailService } from '../services/mail.service.js'
-import { MailCompose } from "../cmps/mail-compose.jsx";
-
-import { eventBusService, showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js'
-import { UserMsg } from "../../../cmps/user-msg.jsx";
 
 
 export function MailIndex() {
@@ -63,7 +64,7 @@ export function MailIndex() {
 
     return <section className="mail-index">
         <div>
-            {/* <MailFilter onSetFilter={onSetFilter} /> */}
+            <MailFilter onSetFilter={onSetFilter} />
             {/* <Link to="/mail/compose"><button>Send Mail</button></Link> */}
 
             {!isLoading && <MailList mails={mails} onRemoveMail={onRemoveMail} onMarkMail={onMarkMail} />}
