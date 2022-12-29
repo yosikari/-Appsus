@@ -260,42 +260,29 @@ function getEmptyNoteImg() {
     info: {
       url: "",
       file: {},
-      title: "our cruise",
+      title: "",
     },
     isPinned: false,
     style: {
-      backgroundColor: "#00d"
+      backgroundColor: "ffffff"
     },
   }
   console.log(note)
   return note
 }
-// function getEmptyNoteTodo() {
-//   let note = {
-//     type: "note-todo",
-//     info: {
-//       label: "",
-//       todos: [
-//         { txt: "plan it", doneAt: null },
-//         { txt: "fo the first task", doneAt: 187111111 }]
-//     },
-//     isPinned: false,
-//     style: {
-//       backgroundColor: "#00d"
-//     },
-//   }
-//   return note
-// }
-function getEmptyNoteTodo(label, todos, isPinned, colors) {
+function getEmptyNoteTodo() {
   let note = {
     type: "note-todo",
     info: {
-      label: label,
-      todos: []
+      label: "",
+      todos: [
+        { id: '0', txt: "", doneAt: null },
+        { id: '1', txt: "plan it", doneAt: null },
+        { id: '2', txt: "fo the first task", doneAt: 187111111 }]
     },
-    isPinned: isPinned,
+    isPinned: false,
     style: {
-      backgroundColor: colors
+      backgroundColor: ""
     },
   }
   return note
