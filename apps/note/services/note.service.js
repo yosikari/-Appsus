@@ -45,6 +45,14 @@ function _createNotes() {
         type: "note-img",
         info: {
           url: "../../../img/cruise.jpg",
+          file: {
+            lastModified: 1672231431170,
+            lastModifiedDate: "",
+            name: "cat-g3a6d68407_1920.jpg",
+            size: 581153,
+            type: "image/jpeg",
+            webkitRelativePath: ""
+          },
           title: "our cruise",
         },
         style: {
@@ -250,8 +258,9 @@ function getEmptyNoteImg() {
   let note = {
     type: "note-img",
     info: {
-      url: "../../../img/cruise.jpg",
-      title: "",
+      url: "",
+      file: {},
+      title: "our cruise",
     },
     isPinned: false,
     style: {
@@ -261,18 +270,32 @@ function getEmptyNoteImg() {
   console.log(note)
   return note
 }
-function getEmptyNoteTodo() {
+// function getEmptyNoteTodo() {
+//   let note = {
+//     type: "note-todo",
+//     info: {
+//       label: "",
+//       todos: [
+//         { txt: "plan it", doneAt: null },
+//         { txt: "fo the first task", doneAt: 187111111 }]
+//     },
+//     isPinned: false,
+//     style: {
+//       backgroundColor: "#00d"
+//     },
+//   }
+//   return note
+// }
+function getEmptyNoteTodo(label, todos, isPinned, colors) {
   let note = {
     type: "note-todo",
     info: {
-      label: "todos",
-      todos: [
-        { txt: "plan it", doneAt: null },
-        { txt: "fo the first task", doneAt: 187111111 }]
+      label: label,
+      todos: []
     },
-    isPinned: false,
+    isPinned: isPinned,
     style: {
-      backgroundColor: "#00d"
+      backgroundColor: colors
     },
   }
   return note

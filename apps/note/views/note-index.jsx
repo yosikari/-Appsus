@@ -1,8 +1,10 @@
 const { useState, useEffect } = React
-
+import { uploadImg } from "../cmps/uploadImg.jsx"
 const { Outlet, Link } = ReactRouterDOM
 import { NoteList } from "../cmps/note-list.jsx"
 import { noteService } from "../services/note.service.js"
+import { NoteAddForm } from "./note-add-form.jsx"
+import UploadAndDisplayImage from "../cmps/uploadImg.jsx"
 import { NoteAdd } from "./note-add.jsx"
 // import { showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js';
 
@@ -31,6 +33,8 @@ export function NoteIndex() {
         console.log('remove')
     }
     return <div>note app
+
+        <UploadAndDisplayImage />
         {/* <nav>
             <Link to="/note">Index</Link> |
             {/* <button> <Link to="/note/add">add</Link> </button> */}
@@ -39,10 +43,13 @@ export function NoteIndex() {
             <Outlet />
         </div > */}
         {/* <button> <Link to="/note/add">add</Link> </button> */}
-        <NoteAdd loadNotes={loadNotes} />
+        {/* <NoteAdd loadNotes={loadNotes} /> */}
+        <NoteAddForm loadNotes={loadNotes} />
+
         {/* <button><Link to="/note/edit">Add note</Link></button> */}
         {!isLoading && <NoteList notes={notes} onRemoveNote={onRemoveNote} />}
         {isLoading && <div>Loading..</div>}
         {!notes.length && <div>No notes to show..</div>}
+        <uploadImg />
     </div >
 }
