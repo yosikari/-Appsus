@@ -1,32 +1,32 @@
-const { useState, useEffect } = React
+// const { useState, useEffect } = React
 
-const UploadAndDisplayImage = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
+// const UploadAndDisplayImage = () => {
+//   const [selectedImage, setSelectedImage] = useState(null);
 
-  return (
-    <div>
-      upload
-      {selectedImage && (
-        <div className="note-add-img">
-          <img alt="not fount" width={"250px"} src={URL.createObjectURL(selectedImage)} />
-          <br />
-          {/* <button onClick={() => setSelectedImage(null)}>Remove</button> */}
-        </div>
-      )}
-      <br />
+//   return (
+//     <div>
+//       upload
+//       {selectedImage && (
+//         <div className="note-add-img">
+//           <img alt="not fount" width={"250px"} src={URL.createObjectURL(selectedImage)} />
+//           <br />
+//           {/* <button onClick={() => setSelectedImage(null)}>Remove</button> */}
+//         </div>
+//       )}
+//       <br />
 
-      <br />
-      <input
-        type="file"
-        name="myImage"
-        onChange={(event) => {
-          console.log(event);
-          console.log(event.target.files[0]);
-          setSelectedImage(event.target.files[0]);
-        }}
-      />
-    </div>
-  );
-};
+//       <br />
+//       <input
+//         type="file"
+//         name="myImage"
+//         onChange={(event) => {
+//           console.log(event);
+//           console.log(event.target.files[0]);
+//           setSelectedImage(event.target.files[0]);
+//         }}
+//       />
+//     </div>
+//   );
+// };
 
-export default UploadAndDisplayImage;
+// export default UploadAndDisplayImage;
