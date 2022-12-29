@@ -23,9 +23,13 @@
 
 
 .user-msg button{
-    background-color: rgb(11, 87, 193);
+    background-color: transparent;
     color: white;
     border: none;
     float: left;
-    margin: 1em;
+    margin: 0;
+}
+
+.user-msg button:hover{
+    background-color: transparent;
 }

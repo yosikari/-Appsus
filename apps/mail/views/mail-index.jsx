@@ -44,7 +44,7 @@ export function MailIndex() {
         })
             .catch((err) => {
                 console.log('Had issues removing', err)
-                // showErrorMsg('Could not remove book, try again please!')
+                showErrorMsg('Could not remove book, try again please!')
             })
     }
 

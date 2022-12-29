@@ -1,5 +1,8 @@
 const { useEffect, useState } = React
 const { useParams, useNavigate, Link, Outlet } = ReactRouterDOM
+import { UserMsg } from '../../../cmps/user-msg.jsx'
+import { eventBusService, showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js'
+
 
 import { mailService } from "../services/mail.service.js"
 
@@ -57,7 +60,7 @@ export function MailDetails() {
 
         <button onClick={() => onRemoveMail(mailId)}><i className="fa-regular fa-trash-can"></i></button>
         <button onClick={() => onNextMail()}><i className="fa-solid fa-angles-right"></i></button>
-
+        <UserMsg />
         {/* <div className="nested-route">
             <Outlet />
         </div> */}
