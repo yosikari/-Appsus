@@ -48,6 +48,16 @@ export function MailIndex() {
             })
     }
 
+    function onMarkMail(mailId) {
+        mailService.get(mailId).then((mail) => {
+            mail.isMarked = !mail.isMarked
+            mailService.save(mail).then(() => {
+                loadMails()
+            })
+        })
+
+    }
+
 
     // return <div>mail app main page</div>
 
@@ -56,7 +66,7 @@ export function MailIndex() {
             {/* <MailFilter onSetFilter={onSetFilter} /> */}
             {/* <Link to="/mail/compose"><button>Send Mail</button></Link> */}
 
-            {!isLoading && <MailList mails={mails} onRemoveMail={onRemoveMail} />}
+            {!isLoading && <MailList mails={mails} onRemoveMail={onRemoveMail} onMarkMail={onMarkMail} />}
             {isLoading && <div>Loading...</div>}
             {!mails.length && <div>No mails to show...</div>}
             {!isSendMail && <button className="send-btn" onClick={() => { setSendMail(!isSendMail) }}>SendMail</button>}
