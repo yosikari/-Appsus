@@ -25,4 +25,7 @@
 /* Mail Cmps */
 @import './cmps/mail-index.css';
 @import './cmps/mail-compose.css';
+@import './cmps/mail-preview.css';
+@import './cmps/mail-list.css';
+
 /* @import './apps/mail/cmps/mail-list.css'; */

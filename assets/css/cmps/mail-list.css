@@ -1,0 +1,44 @@
+.mail-li:hover {
+    cursor: pointer;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    max-width: 95%;
+    align-self: center;
+}
+
+
+.mail-select-btn,
+.mail-remove-btn,
+.mail-mark-btn {
+    display: none;
+}
+
+.mail-li:hover .mail-mark-btn,
+.mail-li:hover .mail-remove-btn,
+.mail-li:hover .mail-select-btn {
+    display: inline;
+    position: sticky;
+    top: 0;
+    margin: 0 auto;
+}
+
+button {
+    border: none;
+    background-color: transparent;
+    height: 3em;
+    width: 3em;
+}
+
+
+button:hover {
+    cursor: pointer;
+    background-color: lightgrey;
+    border-radius: 50%;
+}
+
+
+
+.mail-li {}
+
+.mail-remove-btn {}
+
+.mail-select-btn {}

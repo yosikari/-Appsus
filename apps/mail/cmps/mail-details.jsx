@@ -41,7 +41,7 @@ export function MailDetails() {
             .catch((err) => {
                 console.log('Had issues removing', err)
                 onGoBack()
-                // showErrorMsg('Could not remove book, try again please!')
+                showErrorMsg('Could not remove book, try again please!')
             })
     }
 
@@ -49,14 +49,14 @@ export function MailDetails() {
 
     if (!mail) return <div>Loading...</div>
     return <section className="mail-details">
-        <button onClick={onGoBack}>Go Back</button>
+        <button onClick={onGoBack}><i className="fa-solid fa-arrow-left"></i></button>
 
         <h1>{mail.title}</h1>
         <h5>at: {mail.date} | from: {mail.from}</h5>
         <p>{mail.txtBody}</p>
 
-        <button onClick={() => onRemoveMail(mailId)}>Remove Mail</button>
-        <button onClick={() => onNextMail()}>Next Mail</button>
+        <button onClick={() => onRemoveMail(mailId)}><i className="fa-regular fa-trash-can"></i></button>
+        <button onClick={() => onNextMail()}><i className="fa-solid fa-angles-right"></i></button>
 
         {/* <div className="nested-route">
             <Outlet />
