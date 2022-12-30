@@ -4,7 +4,7 @@ const { Outlet, Link, NavLink } = ReactRouterDOM
 export function NotePreview({ note }) {
   const [cmpType, setCmpType] = useState(note.type)
 
-  return <article className="note-preview">
+  return <article className="note-preview" style={{ backgroundColor: note.style.backgroundColor }}>
     <DynamicCmp note={note} cmpType={cmpType} />
   </article>
 }
@@ -23,14 +23,14 @@ function NoteTxt(props) {
   // console.log(props.note.isPinned)
   return <div className="prev-note-txt-card" style={{ backgroundColor: props.note.style.backgroundColor }} >
     <h6> {props.note.info.txt}</h6>
-    {props.note.isPinned && <h6><i class="fa-sharp fa-solid fa-map-pin fa-2x"></i> </h6>}
+    {props.note.isPinned && <h6><i className="fa-sharp fa-solid fa-map-pin"></i> </h6>}
   </div>
 }
 function NoteImg(props) {
   return <div className="prev-note-txt-card" style={{ backgroundColor: props.note.style.backgroundColor }} >
     <img className="note-preview-img" src={props.note.info.url} />
     <h6> {props.note.info.title}</h6>
-    {props.note.isPinned && <h6><i class="fa-sharp fa-solid fa-map-pin"></i></h6>}
+    {props.note.isPinned && <h6><i className="fa-sharp fa-solid fa-map-pin"></i></h6>}
   </div>
 }
 function NoteTodo(props) {
@@ -38,6 +38,6 @@ function NoteTodo(props) {
   return <div className="prev-note-txt-card" style={{ backgroundColor: props.note.style.backgroundColor }} >
     <h6> {props.note.info.label}</h6>
     <p>{props.note.info.todos.map(todo => <li key={todo.id}>{todo.txt}</li>)}</p>
-    {props.note.isPinned && <h6><i class="fa-sharp fa-solid fa-map-pin"></i></h6>}
+    {props.note.isPinned && <h6><i className="fa-sharp fa-solid fa-map-pin"></i></h6>}
   </div>
 }

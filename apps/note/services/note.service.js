@@ -12,11 +12,15 @@ export const noteService = {
   getEmptyNoteImg,
   getEmptyNoteTodo,
   save,
+  getDefaultFilter
 
 }
 
-function query() {
+function query(filterBy = getDefaultFilter()) {
   return storageService.query(NOTE_KEY)
+
+
+
 }
 function remove(noteId) {
   return storageService.remove(NOTE_KEY, noteId)
@@ -277,9 +281,9 @@ function getEmptyNoteTodo() {
     info: {
       label: "",
       todos: [
-        { id: '0', txt: "", doneAt: null },
-        { id: '1', txt: "plan it", doneAt: null },
-        { id: '2', txt: "fo the first task", doneAt: 187111111 }]
+        // { id: '0', txt: "plan it", doneAt: null },
+        // { id: '1', txt: "fo the first task", doneAt: 187111111 }
+      ]
     },
     isPinned: false,
     style: {
@@ -287,4 +291,7 @@ function getEmptyNoteTodo() {
     },
   }
   return note
+}
+function getDefaultFilter() {
+  return { txt: '', title: '', label: '' }
 }

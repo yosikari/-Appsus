@@ -5,6 +5,8 @@ import { noteService } from "../services/note.service.js"
 export function NoteImg(props) {
 
   const [noteToEdit, setNoteToEdit] = useState(noteService.getEmptyNoteImg())
+  const [isPinned, setIsPinned] = useState(false)
+
   const [imgSrc, setImg] = useState('')
   const { noteId } = useParams()
 
@@ -22,6 +24,7 @@ export function NoteImg(props) {
         navigate('/note')
       })
   }
+
   function handleChange({ target }) {
     let { value, type, name: field, files } = target
 
@@ -59,9 +62,19 @@ export function NoteImg(props) {
 
     })
   }
-
+  function handlePinned() {
+    console.log('pinned', isPinned)
+    setIsPinned(prevIsPinned => !prevIsPinned)
+    console.log('pinned', isPinned)
+    setNoteToEdit(prevNoteToEdit => ({
+      ...prevNoteToEdit,
+      isPinned: !isPinned
+    }
+    ))
+  }
   function onSaveNote(ev) {
     ev.preventDefault()
+    props.handleCard(false)
     noteService.save(noteToEdit).then(() => props.loadNotes())
     // showSuccessMsg('note saved!')
     navigate('/note')
@@ -111,7 +124,7 @@ export function NoteImg(props) {
 
     <form className="note-add-card" onSubmit={onSaveNote}>
       {imgSrc && <img id="add-note-img" src={imgSrc} />}
-      <button id="btnimg" onClick={handleImg}> <i class="fa-regular fa-image fa-10x"></i></button>
+      <button type="button" onClick={handleImg}> <i id="btnimg" className="fa-regular fa-image fa-10x"></i></button>
       {/* <label htmlFor="url">URL : </label> */}
       <input type="text"
         name="url"
@@ -156,7 +169,7 @@ export function NoteImg(props) {
       </select>
 
       <div className="add-note-btn-bottom">
-        <label>
+        {/* <label>
           <input
             style={{ float: 'left', borderColor: 'red', border: '3px' }}
             id="checkbox-btn"
@@ -166,12 +179,12 @@ export function NoteImg(props) {
             onChange={handleChange}
           />
           Pinned
-        </label>
+        </label> */}
         <div >
 
-          <button>{noteToEdit.id ? <i class="fa-regular fa-down-to-bracket"></i> : <i class="fa-regular fa-plus"></i>}</button>
-          <button onClick={(e) => handlePinned}> <Link to="/note"><i class="fa-sharp fa-solid fa-xmark"></i></Link> </button>
-          <button><i class="fa-sharp fa-solid fa-map-pin"></i></button>
+          <button>{noteToEdit.id ? <i className="fa-regular fa-down-to-bracket"></i> : <i className="fa-regular fa-plus"></i>}</button>
+          <button type="button" onClick={() => props.handleCard(false)}> <Link to="/note"><i className="fa-sharp fa-solid fa-xmark"></i></Link> </button>
+          <button onClick={handlePinned} type="button"><i style={(isPinned) ? { color: "black" } : { color: " #8a8a8a" }} className="fa-sharp fa-solid fa-map-pin"></i></button>
 
         </div>
 

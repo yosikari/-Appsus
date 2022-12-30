@@ -1,7 +1,7 @@
 import { noteService } from "../services/note.service.js"
 import { NoteImg } from "../views/note-img.jsx"
 import { utilService } from "../../../services/util.service.js"
-import { TodoCreate } from "../cmps/todo-create.js"
+import { TodoCreate } from "../cmps/todo-create.jsx"
 
 
 const { useState, useEffect } = React
@@ -15,6 +15,7 @@ export function NoteTodo(props) {
   const [newItem, setNewItem] = useState("")
   const [items, setItems] = useState([])
   const [todos, setTodos] = useState([])
+  const [isPinned, setIsPinned] = useState(false)
   const { noteId } = useParams()
 
   useEffect(() => {
@@ -59,57 +60,37 @@ export function NoteTodo(props) {
           style: { backgroundColor: value }
         }
       }
-      // if (field === 'item') {
-      //   let item = {
-      //     id: utilService.makeId(),
-      //     txt: newItem,
-      //     doneAt: 187111111
-      //   }
-      //   return {
-      //     ...prevNoteToEdit,
-      //     info: { ...prevNoteToEdit.info, todos: [...todos, value] },
-      //     isPinned: true
-      //   }
-      // }
+
     })
   }
-  // <input
-  //   type="text"
-  //   name="item"
-  //   placeholder="Add an item..."
-  //   value={newItem}
-  //   onChange={handleChange}
-  // // onChange={(e) => setNewItem(e.target.value)}
-  // />
-
-
-  // <button onClick={() => addItem()}>Add</button>
-  // function addItem() {
-  //   if (!newItem) return
-  //   console.log('new', newItem)
-  //   let item = {
-  //     id: utilService.makeId(),
-  //     txt: newItem,
-  //     doneAt: 187111111
-  //   }
-  //   setItems(prevItems => [...prevItems, newItem])
-  //   setNewItem('')
-
-  // }
-
+  function handlePinned() {
+    console.log('pinned', isPinned)
+    setIsPinned(prevIsPinned => !prevIsPinned)
+    console.log('pinned', isPinned)
+    setNoteToEdit(prevNoteToEdit => ({
+      ...prevNoteToEdit,
+      isPinned: !isPinned
+    }
+    ))
+  }
   function addItems(items) {
+    console.log(items)
     console.log(items)
     console.log(noteToEdit)
     setNoteToEdit(prevNote => ({
       ...prevNote, info: {
         ...prevNote.info,
-        todos: [...prevNote.info.todos, ...items]
+        // todos: [...prevNote.info.todos, ...items]
+        todos: [...prevNote.info.todos, items]
+
       }
     }))
+    console.log(noteToEdit)
     //items
   }
   function onSaveNote(ev) {
     ev.preventDefault()
+    props.handleCard(false)
     console.log(noteToEdit)
     noteService.save(noteToEdit).then(() => props.loadNotes())
     // showSuccessMsg('note saved!')
@@ -142,7 +123,7 @@ export function NoteTodo(props) {
         <option style={{ backgroundColor: '#b9fbc0' }} value="#b9fbc0"></option>
       </select>
 
-      <label>
+      {/* <label>
         <input
           type="checkbox"
           name="checkbox"
@@ -150,13 +131,18 @@ export function NoteTodo(props) {
           onChange={handleChange}
         />
         pinned?
-      </label>
+      </label> */}
 
       <div >
+        {/* ADD/SAVE button */}
+        <button type="submit">
+          {noteToEdit.id ? <i className="fa-regular fa-down-to-bracket"></i> : <i className="fa-regular fa-plus"></i>}
+        </button>
+        {/* CLOSE BUTTON */}
+        <button type="button" onClick={() => props.handleCard(false)}> <Link to="/note"><i className="fa-sharp fa-solid fa-xmark"></i></Link> </button>
 
-        <button>{noteToEdit.id ? <i class="fa-regular fa-down-to-bracket"></i> : <i class="fa-regular fa-plus"></i>}</button>
-        <button onClick={(e) => handlePinned}> <Link to="/note"><i class="fa-sharp fa-solid fa-xmark"></i></Link> </button>
-        <button><i class="fa-sharp fa-solid fa-map-pin"></i></button>
+        {/* PIN BUTTON */}
+        <button onClick={handlePinned} type="button"><i style={(isPinned) ? { color: "black" } : { color: " #8a8a8a" }} className="fa-sharp fa-solid fa-map-pin"></i></button>
 
       </div>
     </form >
