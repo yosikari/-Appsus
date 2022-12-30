@@ -9,6 +9,7 @@ const { useNavigate, useParams, Link } = ReactRouterDOM
 
 
 export function NoteTxt(props) {
+  console.log(props)
   const [noteToEdit, setNoteToEdit] = useState(noteService.getEmptyNoteTxt())
   const [isPinned, setIsPinned] = useState(false)
   const navigate = useNavigate()
@@ -28,13 +29,16 @@ export function NoteTxt(props) {
       })
   }
   function handlePinned() {
+    console.log('pinned', isPinned)
     setIsPinned(prevIsPinned => !prevIsPinned)
-    setNoteToEdit(prevNote => ({
+    console.log('pinned', isPinned)
+    setNoteToEdit(prevNoteToEdit => ({
       ...prevNoteToEdit,
-      isPinned: true
+      isPinned: !isPinned
     }
     ))
   }
+
   function handleChange({ target }) {
     let { value, type, name: field } = target
     //     value = type === 'number' ? +value : value
@@ -66,6 +70,7 @@ export function NoteTxt(props) {
 
   function onSaveNote(ev) {
     ev.preventDefault()
+    props.handleCard(false)
     noteService.save(noteToEdit).then(() => props.loadNotes())
     // showSuccessMsg('note saved!')
     navigate('/note')
@@ -101,7 +106,7 @@ export function NoteTxt(props) {
 
 
       < div className="add-note-btn-bottom">
-        <label>
+        {/* <label>
           <input
             style={{ float: 'left', borderColor: 'red', border: '3px' }}
             id="checkbox-btn"
@@ -111,12 +116,12 @@ export function NoteTxt(props) {
             onChange={handleChange}
           />
           Pinned
-        </label>
+        </label> */}
         <div >
-          <button>{noteToEdit.id ? <i class="fa-regular fa-down-to-bracket"></i> : <i class="fa-regular fa-plus"></i>}</button>
-          <button onClick={(e) => handlePinned}> <Link to="/note"><i class="fa-sharp fa-solid fa-xmark"></i></Link> </button>
-          <button><i class="fa-sharp fa-solid fa-map-pin"></i></button>
-        </div>
+          <button type="submit"> {noteToEdit.id ? <i className="fa-regular fa-down-to-bracket"></i> : <i className="fa-regular fa-plus"></i>}</button>
+          <button type="button" onClick={() => props.handleCard(false)}> <Link to="/note"><i className="fa-sharp fa-solid fa-xmark"></i></Link> </button>
+          {/* PIN BUTTON */}
+          <button onClick={handlePinned} type="button"><i style={(isPinned) ? { color: "black" } : { color: " #8a8a8a" }} className="fa-sharp fa-solid fa-map-pin"></i></button>        </div>
       </div>
     </form >
 

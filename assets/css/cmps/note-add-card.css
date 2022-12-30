@@ -22,7 +22,6 @@
 }
 .note-input-txt-card input{
   font-size: 1.2rem;
-  margin-bottom: 30px;
   height: 50px;
 
 
@@ -50,6 +49,7 @@ select:focus{
   height: 60px;
   border-bottom: #e0e0e0 1px solid ;
   margin-bottom: 20px;
+  margin-top: 30px;
 }
 
 #colors option{
@@ -84,8 +84,13 @@ input[type="checkbox"] {
     margin: 0;
   }
   #add-note-img{
-    display: block !important;
+    /* display: block !important; */
+    width: 200px;
   }
   #btnimg{
-   font-size: 32px;
+  font-size: 32px;
+  }
+  .add-to-do-container{
+    display: flex;
+    align-items: center;
   }
