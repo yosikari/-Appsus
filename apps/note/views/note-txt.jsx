@@ -10,6 +10,7 @@ const { useNavigate, useParams, Link } = ReactRouterDOM
 
 export function NoteTxt(props) {
   const [noteToEdit, setNoteToEdit] = useState(noteService.getEmptyNoteTxt())
+  const [isPinned, setIsPinned] = useState(false)
   const navigate = useNavigate()
   const { noteId } = useParams()
 
@@ -25,6 +26,14 @@ export function NoteTxt(props) {
         console.log('Had issues in note details', err)
         navigate('/note')
       })
+  }
+  function handlePinned() {
+    setIsPinned(prevIsPinned => !prevIsPinned)
+    setNoteToEdit(prevNote => ({
+      ...prevNoteToEdit,
+      isPinned: true
+    }
+    ))
   }
   function handleChange({ target }) {
     let { value, type, name: field } = target
@@ -62,15 +71,20 @@ export function NoteTxt(props) {
     navigate('/note')
   }
   return <div className="note-input-txt-card">
-    <form onSubmit={onSaveNote}>
-      <label htmlFor="text">text : </label>
+    <form className="note-add-card" onSubmit={onSaveNote}>
+      {/* <label htmlFor="text">Your Text : </label> */}
       <input type="text"
+        className="add-note-text-input"
         name="text"
         id="text"
-        placeholder="Enter text..."
+        title="Your note"
+        placeholder="Text..."
         value={noteToEdit.info.txt}
         onChange={handleChange}
       />
+
+
+
 
       <select onChange={handleChange} name="colors" id="colors" multiple>
         <option style={{ backgroundColor: '#fbf8cc' }} value="#fbf8cc"></option>
@@ -85,19 +99,24 @@ export function NoteTxt(props) {
         <option style={{ backgroundColor: '#b9fbc0' }} value="#b9fbc0"></option>
       </select>
 
-      <label>
-        <input
-          type="checkbox"
-          name="checkbox"
-          value={noteToEdit.isPinned}
-          onChange={handleChange}
-        />
-        pinned?
-      </label>
 
-      < div >
-        <button>{noteToEdit.id ? 'Save' : 'Add'}</button>
-        <button> <Link to="/note">Cancel</Link> </button>
+      < div className="add-note-btn-bottom">
+        <label>
+          <input
+            style={{ float: 'left', borderColor: 'red', border: '3px' }}
+            id="checkbox-btn"
+            type="checkbox"
+            name="checkbox"
+            checked={noteToEdit.isPinned}
+            onChange={handleChange}
+          />
+          Pinned
+        </label>
+        <div >
+          <button>{noteToEdit.id ? <i class="fa-regular fa-down-to-bracket"></i> : <i class="fa-regular fa-plus"></i>}</button>
+          <button onClick={(e) => handlePinned}> <Link to="/note"><i class="fa-sharp fa-solid fa-xmark"></i></Link> </button>
+          <button><i class="fa-sharp fa-solid fa-map-pin"></i></button>
+        </div>
       </div>
     </form >
 

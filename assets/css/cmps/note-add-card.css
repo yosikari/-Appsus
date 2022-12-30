@@ -1,0 +1,91 @@
+.note-input-txt-card {
+  color: #8a8a8a;
+  font-size: 1.2rem;
+  font-family: roboto-regular;
+  letter-spacing: .01428571em;
+  
+  width: 500px;
+  min-height: 200px;
+  margin: 100px auto;
+  box-shadow: 0 3px 5px rgb(0 0 0 / 20%);
+  border-color: #e0e0e0;
+  
+  
+  border-radius: 10px
+ 
+}
+.note-add-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.note-input-txt-card input{
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  height: 50px;
+
+
+}
+.note-input-txt-card i{
+  color: #8a8a8a;
+  font-size: 1.5rem;
+}
+input:focus{
+  outline: none !important;
+}
+select:focus{
+  background:transparent;
+      border:none;
+      outline: none !important;
+}
+
+
+.note-add-img{
+  width: 200px;
+}
+#colors{
+  border: none;
+  overflow: hidden;
+  height: 60px;
+  border-bottom: #e0e0e0 1px solid ;
+  margin-bottom: 20px;
+}
+
+#colors option{
+  margin-right: 10px;
+  display: inline-block;
+  cursor: pointer;
+  border: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
+.todo-create-container{
+  height: 200px;
+}
+/* #chechbox-btn:checked{} */
+input[type="checkbox"] {
+  /* display: none; */
+  width: 20px;
+  float: none;
+}
+
+  /* content:'\f276' */
+
+  /* appearance:none */
+
+  .add-note-btn-bottom{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+  }
+  #add-note-img{
+    display: block !important;
+  }
+  #btnimg{
+   font-size: 32px;
+  }

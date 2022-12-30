@@ -20,7 +20,7 @@ export function NoteEdit({ loadNotes }) {
 
     <button onClick={() => onAddBtn("note-txt")}>txt</button>
     <button onClick={() => onAddBtn("note-img")}>img</button>
-    <button onClick={() => onAddBtn("note-todos")} >todo</button>
+    <button onClick={() => onAddBtn("note-todo")} >todo</button>
     {cmpType && <DynamicCmp loadNotes={loadNotes} cmpType={cmpType} />}
 
   </div>
@@ -33,7 +33,7 @@ function DynamicCmp(props) {//props is the note.type
       return <NoteTxt {...props} />
     case 'note-img':
       return <NoteImg {...props} />
-    case 'note-todos':
+    case 'note-todo':
       return <NoteTodo {...props} />
   }
 }

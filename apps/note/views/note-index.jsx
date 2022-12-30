@@ -1,7 +1,6 @@
 const { useState, useEffect } = React
 const { Outlet, Link } = ReactRouterDOM
 import { NoteList } from "../cmps/note-list.jsx"
-import { TodoCreate } from "../cmps/todo-create.js"
 import { noteService } from "../services/note.service.js"
 import { NoteAddForm } from "./note-add-form.jsx"
 // import { showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js';
@@ -30,8 +29,8 @@ export function NoteIndex() {
             })
         console.log('remove')
     }
-    return <div>note app
-        <TodoCreate />
+    return <div>
+
 
         {/* <nav>
             <Link to="/note">Index</Link> |

@@ -19,8 +19,14 @@
 /* Cmps */
 
 @import './cmps/user-msg.css';
+@import './cmps/fonts.css';
+
 @import './cmps/app-header.css';
 @import './cmps/note-preview.css';
+@import './cmps/note-add-form.css';
+@import './cmps/note-add-card.css';
+
+
 
 /* Mail Cmps */
 @import './cmps/mail-index.css';

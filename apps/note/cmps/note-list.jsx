@@ -8,10 +8,12 @@ export function NoteList({ notes, onRemoveNote }) {
             notes.map(note => <li key={note.id}>
                 <NotePreview note={note} />
                 <div>
-                    <button onClick={() => onRemoveNote(note.id)}>X</button>
+                    <button onClick={() => onRemoveNote(note.id)}><i className="fa-regular fa-trash-can"></i></button>
                     <button> <Link to={`/note/${note.id}`}>Details</Link> </button>
-                    {note.type === 'note-txt'}&&<button><Link to={`/note/edit/txt/${note.id}`}>Edit</Link></button>
-                    {note.type === 'note-img'}&&<button><Link to={`/note/edit/img/${note.id}`}>Edit</Link></button>
+                    {note.type === 'note-txt' && <button><Link to={`/note/edit/txt/${note.id}`}>Edit</Link></button>}
+                    {note.type === 'note-img' && <button><Link to={`/note/edit/img/${note.id}`}>Edit</Link></button>}
+                    {note.type === 'note-todo' && <button><Link to={`/note/edit/todo/${note.id}`}>Edit</Link></button>}
+
 
                 </div>
             </li>)

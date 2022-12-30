@@ -22,22 +22,22 @@ function DynamicCmp(props) {//props is the note.type
 function NoteTxt(props) {
   // console.log(props.note.isPinned)
   return <div className="prev-note-txt-card" style={{ backgroundColor: props.note.style.backgroundColor }} >
-    <h4> {props.note.info.txt}</h4>
-    {props.note.isPinned && <h6>📌 </h6>}
+    <h6> {props.note.info.txt}</h6>
+    {props.note.isPinned && <h6><i class="fa-sharp fa-solid fa-map-pin fa-2x"></i> </h6>}
   </div>
 }
 function NoteImg(props) {
   return <div className="prev-note-txt-card" style={{ backgroundColor: props.note.style.backgroundColor }} >
-    <h4> {props.note.info.title}</h4>
-    <img src={props.note.info.url} />
-    {props.note.isPinned && <h6>📌 </h6>}
+    <img className="note-preview-img" src={props.note.info.url} />
+    <h6> {props.note.info.title}</h6>
+    {props.note.isPinned && <h6><i class="fa-sharp fa-solid fa-map-pin"></i></h6>}
   </div>
 }
 function NoteTodo(props) {
   // console.log(props)
   return <div className="prev-note-txt-card" style={{ backgroundColor: props.note.style.backgroundColor }} >
-    <h4> {props.note.info.label}</h4>
+    <h6> {props.note.info.label}</h6>
     <p>{props.note.info.todos.map(todo => <li key={todo.id}>{todo.txt}</li>)}</p>
-    {props.note.isPinned && <h6>📌</h6>}
+    {props.note.isPinned && <h6><i class="fa-sharp fa-solid fa-map-pin"></i></h6>}
   </div>
 }

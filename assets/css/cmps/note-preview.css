@@ -17,17 +17,36 @@ li{
 
 }
 .note-preview{
+  
   border-radius: 10px;
 border: 1px solid rgb(241, 240, 240);
-  font-family: sans-serif;
-  font-weight: bold;
-  font-size: 2em;
+font-family: roboto-regular;
+
+  font-size: 1.5rem;
   /* padding: 13px; */
   margin: 0;
   box-shadow: 0 3px 5px rgb(0 0 0 / 20%);
   border-color: #e0e0e0;
 }
-
+.note-preview li{
+  font-size: 1.3rem;
+  list-style-type:circle;
+  text-align:left;
+  margin-left: 30px;
+}
+.note-preview p{
+  text-align: left;
+  
+}
+.note-preview h6{
+  padding-top: 10px;
+  padding-left: 10px;
+  font-size: 1.4rem;
+}
+.note-preview-img{
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
 .note-preview img {
   width: 100%;
   grid-column: span 2;
@@ -42,61 +61,10 @@ border: 1px solid rgb(241, 240, 240);
   grid-row: span 3;
 } */
 
-.note-input-txt-card{
-  border-radius: 10px;
-
-  width: 200px;
-  min-height: 200px;
-  width: 500px;
-  /* background-color: rgba(0,0,0,.2); */
-  box-shadow: 0 3px 5px rgb(0 0 0 / 20%);
-  border-color: #e0e0e0;
-margin: 100px auto;
-padding: 30px;
-}
-.note-input-txt-card input{
-  height: 50px;
 
 
-}
-.note-add-color-picker-container{
-  margin-top: 50px;
-  display: grid;
-  grid-template-columns: repeat(10,40px);
-  margin-bottom: 50px;
-
-
-}
-.note-add-color-picker-btn{
-  border: none;
-width: 30px;
-height: 30px;
-border-radius: 50%;
-}
-.note-add-img{
-  width: 200px;
-}
 .prev-note-txt-card{
   border-radius: 10px;
 }
 
 
-#colors{
-  height: 100px;
-  border: none;
-  overflow: hidden;
-}
-
-#colors option{
-  margin-right: 10px;
-  display: inline-block;
-  cursor: pointer;
-  background-color: aqua;
-  border: none;
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-}
-.todo-create-container{
-  height: 200px;
-}

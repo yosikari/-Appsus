@@ -6,9 +6,22 @@ export function NoteImg(props) {
 
   const [noteToEdit, setNoteToEdit] = useState(noteService.getEmptyNoteImg())
   const [imgSrc, setImg] = useState('')
+  const { noteId } = useParams()
 
   const navigate = useNavigate()
+  useEffect(() => {
+    if (!noteId) return
+    loadNote()
+  }, [])
 
+  function loadNote() {
+    noteService.get(noteId)
+      .then((note) => setNoteToEdit(note))
+      .catch((err) => {
+        console.log('Had issues in note details', err)
+        navigate('/note')
+      })
+  }
   function handleChange({ target }) {
     let { value, type, name: field, files } = target
 
@@ -58,7 +71,7 @@ export function NoteImg(props) {
   //---------------UPLOAD IMG TO BASE 64-----------------------
   const inputRef = useRef(null);
 
-  const handleClick = () => {
+  const handleImg = () => {
     inputRef.current.click();
   }
 
@@ -67,7 +80,7 @@ export function NoteImg(props) {
     const file = event.target.files[0];
     getBase64(file).then(base64 => {
       setImg(base64)
-      console.log(base64)
+      // console.log(base64)
       setNoteToEdit(prevNoteToEdit => ({
         ...prevNoteToEdit,
         info: { ...prevNoteToEdit.info, url: base64 },
@@ -90,16 +103,16 @@ export function NoteImg(props) {
 
 
   return <div className="note-input-txt-card">
-    <form onSubmit={onSaveNote}>
-      <label htmlFor="text">Title : </label>
-      <input type="text"
-        name="text"
-        id="text"
-        placeholder="Enter text..."
-        value={noteToEdit.info.title}
-        onChange={handleChange}
-      />
-      <label htmlFor="url">URL : </label>
+    <div >
+
+
+
+    </div>
+
+    <form className="note-add-card" onSubmit={onSaveNote}>
+      {imgSrc && <img id="add-note-img" src={imgSrc} />}
+      <button id="btnimg" onClick={handleImg}> <i class="fa-regular fa-image fa-10x"></i></button>
+      {/* <label htmlFor="url">URL : </label> */}
       <input type="text"
         name="url"
         id="url"
@@ -108,6 +121,7 @@ export function NoteImg(props) {
         onChange={handleChange}
       />
       <div>
+
         <input
           name='file'
           style={{ display: 'none' }}
@@ -116,8 +130,18 @@ export function NoteImg(props) {
           onChange={handleFileChange}
         />
       </div>
-      <button className="img-btn" onClick={handleClick}><i className="fa-regular fa-image"></i></button>
-      {imgSrc && <img className="note-add-img" src={imgSrc} />}
+
+      {/* <label htmlFor="text">Title : </label> */}
+      <input type="text"
+        name="text"
+        id="text"
+        placeholder="Enter text..."
+        value={noteToEdit.info.title}
+        onChange={handleChange}
+      />
+
+
+
       <select onChange={handleChange} name="colors" id="colors" multiple>
         <option style={{ backgroundColor: '#fbf8cc' }} value="#fbf8cc"></option>
         <option style={{ backgroundColor: '#fde4cf' }} value="#fde4cf"></option>
@@ -131,19 +155,26 @@ export function NoteImg(props) {
         <option style={{ backgroundColor: '#b9fbc0' }} value="#b9fbc0"></option>
       </select>
 
-      <label>
-        <input
-          type="checkbox"
-          name="checkbox"
-          value={noteToEdit.isPinned}
-          onChange={handleChange}
-        />
-        pinned?
-      </label>
+      <div className="add-note-btn-bottom">
+        <label>
+          <input
+            style={{ float: 'left', borderColor: 'red', border: '3px' }}
+            id="checkbox-btn"
+            type="checkbox"
+            name="checkbox"
+            checked={noteToEdit.isPinned}
+            onChange={handleChange}
+          />
+          Pinned
+        </label>
+        <div >
 
-      < div >
-        <button>{noteToEdit.id ? 'Save' : 'Add'}</button>
-        <button> <Link to="/note">Cancel</Link> </button>
+          <button>{noteToEdit.id ? <i class="fa-regular fa-down-to-bracket"></i> : <i class="fa-regular fa-plus"></i>}</button>
+          <button onClick={(e) => handlePinned}> <Link to="/note"><i class="fa-sharp fa-solid fa-xmark"></i></Link> </button>
+          <button><i class="fa-sharp fa-solid fa-map-pin"></i></button>
+
+        </div>
+
       </div>
     </form >
   </div >

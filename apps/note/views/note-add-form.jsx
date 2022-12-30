@@ -13,15 +13,17 @@ export function NoteAddForm({ loadNotes }) {
     setCmpType(type)
   }
 
-  return <div>note add
-
-    <button onClick={() => onAddBtn("note-txt")}>txt</button>
-    <button onClick={() => onAddBtn("note-img")}>img</button>
-    <button onClick={() => onAddBtn("note-todos")} >todo</button>
+  return <div>
+    <div className="add-note-btn-container">
+      <p onClick={() => onAddBtn("note-txt")}>Take a note....</p>
+      <div className="add-note-btns" >
+        <button title="Add text" onClick={() => onAddBtn("note-txt")}><i class="fa-sharp fa-solid fa-pen"></i></button>
+        <button title="Add image" onClick={() => onAddBtn("note-img")}><i class="fa-regular fa-image"></i></button>
+        <button title="Add todos" onClick={() => onAddBtn("note-todo")} ><i class="fa-regular fa-square-check"></i></button>
+      </div>
+    </div>
     {cmpType && <DynamicCmp loadNotes={loadNotes} cmpType={cmpType} />}
-
   </div>
-
 }
 function DynamicCmp(props) {//props is the note.type
   // console.log('DynamicCmp', props)
@@ -30,7 +32,7 @@ function DynamicCmp(props) {//props is the note.type
       return <NoteTxt {...props} />
     case 'note-img':
       return <NoteImg {...props} />
-    case 'note-todos':
+    case 'note-todo':
       return <NoteTodo {...props} />
   }
 }

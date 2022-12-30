@@ -15,7 +15,21 @@ export function NoteTodo(props) {
   const [newItem, setNewItem] = useState("")
   const [items, setItems] = useState([])
   const [todos, setTodos] = useState([])
+  const { noteId } = useParams()
 
+  useEffect(() => {
+    if (!noteId) return
+    loadNote()
+  }, [])
+
+  function loadNote() {
+    noteService.get(noteId)
+      .then((note) => setNoteToEdit(note))
+      .catch((err) => {
+        console.log('Had issues in note details', err)
+        navigate('/note')
+      })
+  }
   function handleChange({ target }) {
     let { value, type, name: field } = target
     //     value = type === 'number' ? +value : value
@@ -102,12 +116,12 @@ export function NoteTodo(props) {
     navigate('/note')
   }
   return <div className="note-input-txt-card">
-    <form onSubmit={onSaveNote}>
-      <label htmlFor="todos-label">Label your todos : </label>
+    <form className="note-add-card" onSubmit={onSaveNote}>
+      {/* <label htmlFor="todos-label">Label your todos : </label> */}
       <input type="text"
         name="todos-label"
         id="todos-label"
-        placeholder="Enter text..."
+        placeholder="Your list name..."
         value={noteToEdit.info.label}
         onChange={handleChange}
       />
@@ -138,9 +152,12 @@ export function NoteTodo(props) {
         pinned?
       </label>
 
-      < div >
-        <button>{noteToEdit.id ? 'Save' : 'Add'}</button>
-        <button> <Link to="/note">Cancel</Link> </button>
+      <div >
+
+        <button>{noteToEdit.id ? <i class="fa-regular fa-down-to-bracket"></i> : <i class="fa-regular fa-plus"></i>}</button>
+        <button onClick={(e) => handlePinned}> <Link to="/note"><i class="fa-sharp fa-solid fa-xmark"></i></Link> </button>
+        <button><i class="fa-sharp fa-solid fa-map-pin"></i></button>
+
       </div>
     </form >
 

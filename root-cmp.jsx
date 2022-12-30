@@ -13,6 +13,7 @@ import { NoteEdit } from "./apps/note/views/note-edit.jsx"
 import { NoteAddForm } from "./apps/note/views/note-add-form.jsx"
 import { NoteTxt } from "./apps/note/views/note-txt.jsx"
 import { NoteImg } from "./apps/note/views/note-img.jsx"
+import { NoteTodo } from "./apps/note/views/note-todo.jsx"
 
 
 
@@ -34,6 +35,7 @@ export function App() {
                 <Route element={<NoteAddForm />} path="/note/edit/" />
                 <Route element={<NoteTxt />} path="/note/edit/txt/:noteId" />
                 <Route element={<NoteImg />} path="/note/edit/img/:noteId" />
+                <Route element={<NoteTodo />} path="/note/edit/todo/:noteId" />
                 <Route element={<NoteDetails />} path="/note/:noteId" />
             </Routes>
         </section>
