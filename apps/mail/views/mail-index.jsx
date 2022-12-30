@@ -5,9 +5,10 @@ import { mailService } from '../services/mail.service.js'
 import { eventBusService, showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js'
 
 import { UserMsg } from "../../../cmps/user-msg.jsx";
-import { MailFilter } from "../cmps/mail-filter.jsx";
+import { MailSearch } from "../cmps/mail-search.jsx";
 import { MailCompose } from "../cmps/mail-compose.jsx";
 import { MailList } from "../cmps/mail-list.jsx";
+import { MailSidebar } from '../cmps/mail-sidebar-filter.jsx';
 
 
 
@@ -17,11 +18,12 @@ export function MailIndex() {
     const [mails, setMails] = useState([])
     const [isSendMail, setSendMail] = useState(false)
     const [searchType, setSearchType] = useState(false)
+    const [isFilterEqual, setFilterEqual] = useState(false)
 
     useEffect(() => {
         setIsLoading(true)
         loadMails()
-    }, [filterBy, searchType])
+    }, [filterBy, searchType, isFilterEqual])
 
     useEffect(() => {
         loadMails()
@@ -30,18 +32,20 @@ export function MailIndex() {
     function onSetFilter(filterByFromFilter) {
         setFilterBy(filterByFromFilter)
     }
-    function onSetSearchType(searchType) {
+    function onSetSearchType(searchType, filterEqual = true) {
         setSearchType(searchType)
+        setFilterEqual(filterEqual)
     }
 
     function loadMails() {
-        mailService.query(filterBy, searchType).then(mailsToUpdate => {
+        mailService.query(filterBy, searchType, isFilterEqual).then(mailsToUpdate => {
             setMails(mailsToUpdate)
             setIsLoading(false)
         })
     }
 
-    function onRemoveMail(mailId) {
+    function onRemoveMail(ev, mailId) {
+        ev.stopPropagation()
         mailService.remove(mailId).then(() => {
             const updatedMails = mails.filter(mail => mail.id !== mailId)
             setMails(updatedMails)
@@ -53,7 +57,8 @@ export function MailIndex() {
             })
     }
 
-    function onMarkMail(mailId) {
+    function onMarkMail(ev, mailId) {
+        ev.stopPropagation()
         mailService.get(mailId).then((mail) => {
             mail.isMarked = !mail.isMarked
             mailService.save(mail).then(() => {
@@ -68,10 +73,10 @@ export function MailIndex() {
 
     return <section className="mail-index">
         <div>
-            <MailFilter onSetFilter={onSetFilter} onSetSearchType={onSetSearchType} />
+            <MailSearch onSetFilter={onSetFilter} onSetSearchType={onSetSearchType} />
             {/* <Link to="/mail/compose"><button>Send Mail</button></Link> */}
-
-            {!isLoading && <MailList mails={mails} onRemoveMail={onRemoveMail} onMarkMail={onMarkMail} />}
+            <MailSidebar onSetFilter={onSetFilter} onSetSearchType={onSetSearchType} />
+            {!isLoading && <MailList mails={mails} onRemoveMail={onRemoveMail} onMarkMail={onMarkMail} loadMails={loadMails}/>}
             {isLoading && <div>Loading...</div>}
             {!mails.length && <div>No mails to show...</div>}
             {!isSendMail && <button className="send-btn" onClick={() => { setSendMail(!isSendMail) }}>SendMail</button>}

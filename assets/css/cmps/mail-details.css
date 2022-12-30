@@ -1,19 +1,38 @@
-.mail-details {}
+.mail-details {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 2em;
+}
+
+.mail-details-back-btn {}
+
+.mail-details-title {
+    font-size: 2em;
+}
+
+.icon-big {
+    font-size: 2em;
+    color: rgb(160, 195, 255);
+}
+
+.mail-details-from {
+    font-size: 1.2em;
+}
+
+.mail-details-date {
+    font-size: 0.6em;
+    font-weight: 500;
+}
+
+.mail-details-txt {
+    font-size: 1.2em;
+    max-width: 70%;
+}
 
 .mail-details-img {
     height: 50vh;
-    object-fit:contain;
+    object-fit: contain;
 }
 
+.mail-details-remove-btn {}
 
-/* return <section className="mail-details">
-   <button onClick={onGoBack}><i className="fa-solid fa-arrow-left"></i></button>
-
-        <h1>{mail.title}</h1>
-        <h5>at: {mail.date} | from: {mail.from}</h5>
-        <p>{mail.txtBody}</p>
-        <div>{mail.imgSrc&&<img src={mail.imgSrc} alt="" />}</div>
-
-        <button onClick={() => onRemoveMail(mailId)}><i className="fa-regular fa-trash-can"></i></button>
-        <button onClick={() => onNextMail()}><i className="fa-solid fa-angles-right"></i></button>
-        <UserMsg /> */
+.mail-details-next-btn {}

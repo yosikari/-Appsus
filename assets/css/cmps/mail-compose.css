@@ -46,7 +46,7 @@
     flex-direction: column;
 }
 
-input {
+.compose-input {
     border: none;
     width: 90%;
     align-self: center;
@@ -58,11 +58,11 @@ textarea:focus {
 }
 
 
-hr {
+.compose-hr {
     background-color: lightgrey;
     height: 1px;
     border: none;
-    width: 90%;
+    margin: 0;
 }
 
 .compose-txt {

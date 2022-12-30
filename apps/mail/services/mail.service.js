@@ -1,5 +1,6 @@
 import { utilService } from '../../../services/util.service.js'
 import { storageService } from '../../../services/async-storage.service.js'
+import { txtDemoData } from '../mails-demo-data/mail-demo-data-txt.js'
 
 const MAIL_KEY = 'mailDB'
 _createMails()
@@ -14,15 +15,19 @@ export const mailService = {
     getNextMailId
 }
 
-function query(filterBy = getDefaultFilter(), searchType ) {
+function query(filterBy = getDefaultFilter(), searchType, filterEqual) {
     return storageService.query(MAIL_KEY)
         .then(mails => {
             if (filterBy.txt) {
                 const regex = new RegExp(filterBy.txt, 'i')
                 mails = mails.filter(mail => regex.test(mail[searchType]))
             }
-            if (filterBy.isMarked) {
-                mails = mails.filter(mail => mail.isMarked <= filterBy.isMarked)
+            else if (searchType === 'all') {
+                return mails
+            }
+            else {
+                mails = mails.filter(mail => filterEqual ? mail[searchType] : !mail[searchType]
+                )
             }
             return mails
         })
@@ -55,8 +60,8 @@ function save(mail) {
     }
 }
 
-function getEmptyMail(from = '', title = '', txtBody = '', isRecived = false, 
-                      imgSrc='', date = getDateNow(),isMarked = false, isRead = false) {
+function getEmptyMail(from = '', title = '', txtBody = '', isRecived = false,
+    imgSrc = '', date = getDateNow(), isMarked = false, isRead = false) {
     return {
         from: from,
         title: title,
@@ -70,15 +75,14 @@ function getEmptyMail(from = '', title = '', txtBody = '', isRecived = false,
 }
 
 function getDefaultFilter() {
-    return { title: '' }
+    return { txt: '' }
 }
 
 function _createMails() {
     let mails = utilService.loadFromStorage(MAIL_KEY)
     if (!mails || !mails.length) {
-        mails = []
-        mails.push(_createMail('AliExpress', 'Don\'t miss this SALE', `asdadsasd asdsasddasasd sdsdasdasda asdsadsdasad sadsadasdasd sadasdsadsda asdsdasdasda sadsdasdasda sadsdasdasad sadsdasadsdasad asdasdsdasadasd asdasdsadsdasad sdasdasdasdasad THANK YOU :)`, true, '11/12/2022'))
-        mails.push(_createMail('Ebay.com', 'SALE SALE SALE!!!', `asdadsasd asdsasddasasd sdsdasdasda asdsadsdasad sadsadasdasd sadasdsadsda asdsdasdasda sadsdasdasda sadsdasdasad sadsdasadsdasad asdasdsdasadasd asdasdsadsdasad sdasdasdasdasad THANK YOU :)`, true, '13/08/2022'))
+        mails.push(_createMail('AliExpress', 'Don\'t miss this SALE', txtDemoData[0], true, '11/12/2022'))
+        mails.push(_createMail('Ebay.com', 'SALE SALE SALE!!!', txtDemoData[1], true, '13/08/2022'))
         mails.push(_createMail('Puki Puk', 'Hello Muki', `asdadsasd asdsasddasasd sdsdasdasda asdsadsdasad sadsadasdasd sadasdsadsda asdsdasdasda sadsdasdasda sadsdasdasad sadsdasadsdasad asdasdsdasadasd asdasdsadsdasad sdasdasdasdasad THANK YOU :)`, true, '17/05/2021'))
         mails.push(_createMail('AliExpress', 'Your order has being shipped', `asdadsasd asdsasddasasd sdsdasdasda asdsadsdasad sadsadasdasd sadasdsadsda asdsdasdasda sadsdasdasda sadsdasdasad sadsdasadsdasad asdasdsdasadasd asdasdsadsdasad sdasdasdasdasad THANK YOU :)`, true, '12/02/2019'))
         mails.push(_createMail('Puki Puk', 'Hi Muki lets play!', `asdadsasd asdsasddasasd sdsdasdasda asdsadsdasad sadsadasdasd sadasdsadsda asdsdasdasda sadsdasdasda sadsdasdasad sadsdasadsdasad asdasdsdasadasd asdasdsadsdasad sdasdasdasdasad THANK YOU :)`, true))

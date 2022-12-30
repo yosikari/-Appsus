@@ -2,12 +2,14 @@ const { useState, useEffect, useRef } = React
 
 import { mailService } from "../services/mail.service.js"
 
-export function MailFilter({ onSetFilter, onSetSearchType }) {
+export function MailSearch({ onSetFilter, onSetSearchType }) {
     const [filterByToEdit, setFilterByToEdit] = useState(mailService.getDefaultFilter())
     const elInputRef = useRef(null)
 
     useEffect(() => {
+       if(!filterByToEdit.title && !filterByToEdit.txt){
         onSetFilter(filterByToEdit)
+       }
     }, [filterByToEdit])
 
     function handleChange({ target }) {
@@ -20,6 +22,7 @@ export function MailFilter({ onSetFilter, onSetSearchType }) {
     function onSubmitFilter(ev) {
         ev.preventDefault()
         onSetFilter(filterByToEdit)
+        onSetSearchType(searchBy)
     }
 
     const [searchBy, setSearchBy] = useState('title')

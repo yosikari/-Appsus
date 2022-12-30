@@ -1,0 +1,33 @@
+.mail-sidebar {
+    top: 0;
+    z-index: 555;
+    display: flex;
+    height: 5vh;
+    width: 100vw;
+    background-color: rgb(219, 219, 219);
+    /* background-color: rgb(246, 248, 252);
+ */
+}
+
+.mail-sidebar-all {
+    min-width: 10vw;
+}
+
+.mail-sidebar-sent {
+    min-width: 10vw;
+}
+
+.mail-sidebar-income {
+    min-width: 10vw;
+}
+
+.mail-sidebar-marked {
+    min-width: 10vw;
+}
+
+.mail-sidebar-unread {
+    min-width: 10vw;}
+
+.mail-sidebar-read {
+    min-width: 10vw;
+}

@@ -6,19 +6,9 @@
 }
 
 
-.mail-select-btn,
-.mail-remove-btn,
-.mail-mark-btn {
-    display: none;
-}
-
-.mail-li:hover .mail-mark-btn,
-.mail-li:hover .mail-remove-btn,
-.mail-li:hover .mail-select-btn {
-    display: inline;
-    position: sticky;
-    top: 0;
-    margin: 0 auto;
+ul.mail-list{
+    margin: 0;
+    padding: 0;
 }
 
 button {
@@ -36,6 +26,9 @@ button:hover {
 }
 
 
+.mail-list:hover{
+    width: 100vw;
+}
 
 .mail-li {}
 

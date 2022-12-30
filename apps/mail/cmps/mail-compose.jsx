@@ -56,7 +56,7 @@ export function MailCompose({ onSetSendMail, onSetMails }) {
         <button onClick={() => onSetSendMail(false)}>X</button>
       </section>
       <form className="compose-form" onSubmit={handleSubmit}>
-        <input type="email"
+        <input className="compose-input" type="email"
           id="email"
           name="email"
           placeholder="To"
@@ -64,16 +64,16 @@ export function MailCompose({ onSetSendMail, onSetMails }) {
           onChange={() => setEmail(event.target.value)}
           ref={elInputRef}
         />
-        <hr />
+        <hr className="compose-hr" />
 
-        <input type="title"
+        <input  className="compose-input" type="title"
           id="title"
           name="title"
           placeholder="Title"
           value={title}
           onChange={() => setTitle(event.target.value)}
         />
-        <hr />
+        <hr className="compose-hr" />
 
         <textarea className="compose-txt" type="textarea"
           id="txt"
