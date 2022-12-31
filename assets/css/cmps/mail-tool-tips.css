@@ -1,0 +1,57 @@
+.tooltiptext-remove,
+.tooltiptext-select,
+.tooltiptext-restore {
+    visibility: hidden;
+    width: 120px;
+    opacity: 40%;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    width: 120px;
+    top: 100%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.mail-details-back-btn:hover .tooltiptext-details-back,
+.mail-restore-btn:hover .tooltiptext-restore,
+.mail-details-next-btn:hover .tooltiptext-details-next,
+.mail-details-remove-btn:hover .tooltiptext-details-remove,
+.mail-mark-btn:hover .tooltiptext-mark,
+.mail-remove-btn:hover .tooltiptext-remove,
+.mail-select-btn:hover .tooltiptext-select,
+.mail-restore-btn:hover .tooltiptext-restore {
+    visibility: visible;
+}
+
+.tooltiptext-details-back,
+.tooltiptext-restore,
+.tooltiptext-details-next,
+.tooltiptext-details-remove,
+.tooltiptext-mark {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    opacity: 40%;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 111;
+    width: 120px;
+    left: 10%;
+    margin-left: -60px;
+    margin-top: 4%;
+}
+
+.tooltiptext-details-back{
+    left: 10%;
+    margin-left: 0px;
+    margin-top: -5px;
+
+}

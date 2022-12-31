@@ -1,7 +1,6 @@
 .mail-li:hover {
     cursor: pointer;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    max-width: 95%;
     align-self: center;
 }
 
@@ -26,9 +25,6 @@ button:hover {
 }
 
 
-.mail-list:hover{
-    width: 100vw;
-}
 
 .mail-li {}
 

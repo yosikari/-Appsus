@@ -20,6 +20,7 @@ export function MailSidebar({onSetFilter , onSetSearchType }) {
         <button className="mail-sidebar-marked" onClick={()=>handleOnClick({type: 'isMarked', filterEqual: true})}>Marked as star</button>
         <button className="mail-sidebar-unread" onClick={()=>handleOnClick({type: 'isRead', filterEqual: false})}>Unread</button>
         <button className="mail-sidebar-read" onClick={()=>handleOnClick({type: 'isRead', filterEqual: true})}>Read</button>
+        <button className="mail-sidebar-trash" onClick={()=>handleOnClick({type: 'isRemoved', filterEqual: true})}>Trash</button>
     </nav>
 
 

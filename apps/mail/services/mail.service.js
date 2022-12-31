@@ -20,11 +20,11 @@ function query(filterBy = getDefaultFilter(), searchType, filterEqual) {
         .then(mails => {
             if (filterBy.txt) {
                 const regex = new RegExp(filterBy.txt, 'i')
-                mails = mails.filter(mail => regex.test(mail[searchType]))
+                mails = mails.filter(mail => !mail.isRemoved && regex.test(mail[searchType]))
             }
             else if (searchType === 'all') {
-                return mails
-            }
+                mails = mails.filter(mail => !mail.isRemoved)
+                }
             else {
                 mails = mails.filter(mail => filterEqual ? mail[searchType] : !mail[searchType]
                 )
@@ -70,7 +70,8 @@ function getEmptyMail(from = '', title = '', txtBody = '', isRecived = false,
         imgSrc: imgSrc,
         isMarked: isMarked,
         isRead: isRead,
-        date: date
+        date: date,
+        isRemoved: false
     }
 }
 

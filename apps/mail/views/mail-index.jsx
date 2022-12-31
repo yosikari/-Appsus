@@ -44,17 +44,37 @@ export function MailIndex() {
         })
     }
 
-    function onRemoveMail(ev, mailId) {
+    function onRemoveMail(ev, mail) {
         ev.stopPropagation()
-        mailService.remove(mailId).then(() => {
-            const updatedMails = mails.filter(mail => mail.id !== mailId)
+        if(mail.isRemoved){
+        mailService.remove(mail.id).then(() => {
+            const updatedMails = mails.filter(currMail => currMail.id !== mail.id)
             setMails(updatedMails)
-            showSuccessMsg('Mail removed')
+            showSuccessMsg('Removed permanently')
         })
             .catch((err) => {
                 console.log('Had issues removing', err)
                 showErrorMsg('Could not remove book, try again please!')
             })
+        }else{
+            mail.isRemoved = true
+            mailService.save(mail).then(()=>{
+                loadMails()
+            })
+
+            showSuccessMsg('Mail removed')
+
+        }
+    }
+
+    function onRestoreMail(ev, mail) {
+        ev.stopPropagation()
+        mail.isRemoved = false
+        mailService.save(mail).then(()=>{
+            loadMails()
+        })
+        showSuccessMsg('Mail restored')
+
     }
 
     function onMarkMail(ev, mailId) {
@@ -76,7 +96,7 @@ export function MailIndex() {
             <MailSearch onSetFilter={onSetFilter} onSetSearchType={onSetSearchType} />
             {/* <Link to="/mail/compose"><button>Send Mail</button></Link> */}
             <MailSidebar onSetFilter={onSetFilter} onSetSearchType={onSetSearchType} />
-            {!isLoading && <MailList mails={mails} onRemoveMail={onRemoveMail} onMarkMail={onMarkMail} loadMails={loadMails}/>}
+            {!isLoading && <MailList mails={mails} onRemoveMail={onRemoveMail} onMarkMail={onMarkMail} loadMails={loadMails} onRestoreMail= {onRestoreMail}/>}
             {isLoading && <div>Loading...</div>}
             {!mails.length && <div>No mails to show...</div>}
             {!isSendMail && <button className="send-btn" onClick={() => { setSendMail(!isSendMail) }}>SendMail</button>}

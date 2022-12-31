@@ -8,6 +8,7 @@
         "star from title date txt";
 }
 
+
 .mail-preview h2,
 .mail-preview h3,
 .mail-preview p {
@@ -32,16 +33,22 @@
     grid-area: date;
 }
 
+.mail-restore-btn{
+margin-inline-end: 1em;
+}
+
+
 .mail-mark-btn {
     grid-area: star;
 }
 
+.mail-restore-btn,
 .mail-select-btn,
 .mail-remove-btn {
     display: none;
 }
 
-/* .mail-li:hover .mail-mark-btn, */
+.mail-li:hover .mail-restore-btn, 
 .mail-li:hover .mail-remove-btn,
 .mail-li:hover .mail-select-btn {
     display: block;
@@ -63,9 +70,9 @@
 
 
 
-li:hover {
+/* li:hover {
     width: 100vw;
-} 
+}  */
 
 
 
