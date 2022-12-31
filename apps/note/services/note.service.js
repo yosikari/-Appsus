@@ -18,6 +18,13 @@ export const noteService = {
 
 function query(filterBy = getDefaultFilter()) {
   return storageService.query(NOTE_KEY)
+    .then(notes => {
+      if (filterBy.txt) {
+        const regex = new RegExp(filterBy.txt, 'i')
+        notes = notes.filter(note => note.type === "note-txt" && regex.test(note.info.txt) || note.type === "note-img" && regex.test(note.info.title) || note.type === "note-todo" && regex.test(note.info.label))
+      }
+      return notes
+    })
 
 
 
@@ -34,21 +41,36 @@ function _createNotes() {
   if (!notes || !notes.length) {
     notes = [
       {
+        id: "n103",
+        type: "note-todo",
+
+        info: {
+          label: "Plan our next vacation:",
+          todos: [
+            { txt: "Driving liscence", doneAt: null },
+            { txt: "Buy new dress 👗", doneAt: 187111111 }
+          ]
+        },
+        style: {
+          backgroundColor: "#98f5e1"
+        },
+
+      }, {
         id: "n101",
         type: "note-txt",
         isPinned: true,
         info: {
-          txt: "Fullstack me Baby!"
+          txt: "React time 🔥 "
         },
         style: {
-          backgroundColor: "#ffffff"
+          backgroundColor: "#fbf8cc"
         },
       },
       {
         id: "n102",
         type: "note-img",
         info: {
-          url: "../../../img/cruise.jpg",
+          url: "https://cdn.pixabay.com/photo/2014/08/12/00/01/santorini-416135_960_720.jpg",
           file: {
             lastModified: 1672231431170,
             lastModifiedDate: "",
@@ -57,45 +79,99 @@ function _createNotes() {
             type: "image/jpeg",
             webkitRelativePath: ""
           },
-          title: "our cruise",
+          title: "our Greece vacation ❤️",
         },
         style: {
-          backgroundColor: "#ffffff"
+          backgroundColor: "#90dbf4"
         },
-      },
-
-      {
-        id: "n103",
-        type: "note-todo",
-
-        info: {
-          label: "go to a vacation:",
-          todos: [
-            { txt: "Driving liscence", doneAt: null },
-            { txt: "Coding power", doneAt: 187111111 }
-          ]
-        },
-        style: {
-          backgroundColor: "#ffffff"
-        },
-
       },
       {
         id: "n105",
         type: "note-txt",
-        isPinned: true,
+        isPinned: false,
         info: {
-          txt: "Fullstack me Baby!"
+          txt: "vanilla or chocolate?? 🍦 🍦 🍦"
         }, style: {
-          backgroundColor: "#ffffff"
+          backgroundColor: "#ffcfd2"
         },
+      },
+      {
+        id: "n108",
+        type: "note-todo",
+
+        info: {
+          label: "Our groceries list:",
+          todos: [
+            { txt: "fruits", doneAt: null },
+            { txt: "bread", doneAt: 187111111 },
+            { txt: "rice", doneAt: 187111111 },
+            { txt: "cake", doneAt: 187111111 }
+          ]
+        },
+        style: {
+          backgroundColor: "#cfbaf0"
+        },
+
       },
       {
         id: "n106",
         type: "note-img",
         info: {
-          url: "../../../img/cruise.jpg",
-          title: "our cruise",
+          url: "https://cdn.pixabay.com/photo/2016/09/15/19/24/salad-1672505_960_720.jpg",
+          title: "my favorite salad!",
+        },
+        style: {
+          backgroundColor: "#fde4cf"
+        },
+      },
+      {
+        id: "n109",
+        type: "note-txt",
+        isPinned: true,
+        info: {
+          txt: "Dont forget to SMILE!"
+        }, style: {
+          backgroundColor: "#b9fbc0"
+        },
+      },
+      {
+        id: "n110",
+        type: "note-img",
+        info: {
+          url: "https://cdn.pixabay.com/photo/2017/06/20/17/42/starfish-2423999_960_720.jpg",
+          title: "Next to the sea 🐙",
+        },
+        style: {
+          backgroundColor: "#ffffff"
+        },
+      },
+
+      {
+        id: "n112",
+        type: "note-todo",
+
+        info: {
+          label: "How to make the best pasta:",
+          todos: [
+            { txt: "Boil some water", doneAt: null },
+            { txt: "Add the pasta for 10 min", doneAt: 187111111 },
+            { txt: "Heat oil in large nonstick skillet", doneAt: 187111111 },
+            { txt: "Add diced tomatoes, garlic and cream ", doneAt: 187111111 },
+            { txt: "Stir it for a few minuts and add the pasta", doneAt: 187111111 },
+            { txt: "Bon appetit 🍝 ", doneAt: 187111111 },
+
+          ]
+        },
+        style: {
+          backgroundColor: "#fde4cf"
+        },
+      },
+      {
+        id: "n111",
+        type: "note-img",
+        info: {
+          url: "https://cdn.pixabay.com/photo/2013/11/19/09/35/glasses-213156_960_720.jpg",
+          title: "Happy new year!!",
         },
         style: {
           backgroundColor: "#ffffff"
@@ -105,76 +181,12 @@ function _createNotes() {
         id: "n107",
         type: "note-img",
         info: {
-          url: "../../../img/maldives.jpg",
-          title: "our vacation",
+          url: "https://cdn.pixabay.com/photo/2016/10/13/11/58/chocolates-1737580_960_720.jpg",
+          title: "DESSERT TO DIE FOR",
         },
         style: {
           backgroundColor: "#ffffff"
         },
-      },
-      {
-        id: "n108",
-        type: "note-todo",
-
-        info: {
-          label: "go to a vacation:",
-          todos: [
-            { txt: "Driving liscence", doneAt: null },
-            { txt: "Coding power", doneAt: 187111111 }
-          ]
-        },
-        style: {
-          backgroundColor: "#ffffff"
-        },
-
-      },
-      {
-        id: "n109",
-        type: "note-txt",
-        isPinned: true,
-        info: {
-          txt: "Fullstack me Baby!"
-        }, style: {
-          backgroundColor: "#ffffff"
-        },
-      },
-      {
-        id: "n110",
-        type: "note-img",
-        info: {
-          url: "../../../img/cruise.jpg",
-          title: "our cruise",
-        },
-        style: {
-          backgroundColor: "#ffffff"
-        },
-      },
-      {
-        id: "n111",
-        type: "note-img",
-        info: {
-          url: "../../../img/maldives.jpg",
-          title: "our vacation",
-        },
-        style: {
-          backgroundColor: "#ffffff"
-        },
-      },
-      {
-        id: "n112",
-        type: "note-todo",
-
-        info: {
-          label: "go to a vacation:",
-          todos: [
-            { txt: "Driving liscence", doneAt: null },
-            { txt: "Coding power", doneAt: 187111111 }
-          ]
-        },
-        style: {
-          backgroundColor: "#ffffff"
-        },
-
       },
       {
         id: "n113",
@@ -191,19 +203,19 @@ function _createNotes() {
         id: "n114",
         type: "note-img",
         info: {
-          url: "../../../img/cruise.jpg",
-          title: "our cruise",
+          url: "https://cdn.pixabay.com/photo/2018/05/02/17/22/beach-3369140_960_720.jpg",
+          title: "My favorite spot 🐬",
         },
         style: {
-          backgroundColor: "#ffffff"
+          backgroundColor: "#8eecf5"
         },
       },
       {
         id: "n104",
         type: "note-img",
         info: {
-          url: "../../../img/maldives.jpg",
-          title: "our vacation",
+          url: "https://cdn.pixabay.com/photo/2022/12/10/11/05/snow-7646952_960_720.jpg",
+          title: "Start snowing here ❄️",
         },
         style: {
           backgroundColor: "#ffffff"
@@ -214,14 +226,20 @@ function _createNotes() {
         type: "note-todo",
 
         info: {
-          label: "go to a vacation:",
+          label: "how to make a tea 🫖 :",
           todos: [
-            { txt: "Driving liscence", doneAt: null },
-            { txt: "Coding power", doneAt: 187111111 }
+            { txt: "Treat your water kindly", doneAt: null },
+            { txt: "Run the tap a little so the water's nicely aerated", doneAt: 187111111 },
+            { txt: "only boil it once to keep the oxygen level up", doneAt: 187111111 },
+            { txt: "Pop a tea bag into your mug", doneAt: 187111111 },
+            { txt: "our over the hot water and stir briefly", doneAt: 187111111 },
+            { txt: "Wait patiently", doneAt: 187111111 },
+            { txt: "Give it a squeeze", doneAt: 187111111 },
+            { txt: "Customise your brew", doneAt: 187111111 },
           ]
         },
         style: {
-          backgroundColor: "#ffffff"
+          backgroundColor: "#b9fbc0"
         },
 
       }
@@ -293,5 +311,5 @@ function getEmptyNoteTodo() {
   return note
 }
 function getDefaultFilter() {
-  return { txt: '', title: '', label: '' }
+  return { txt: '', title: '', label: '', isPinned: '' }
 }

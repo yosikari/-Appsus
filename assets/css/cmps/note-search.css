@@ -1,0 +1,21 @@
+.search-container{
+  color: #8a8a8a;
+  font-size: 1.2rem;
+  font-family: roboto-regular;
+  box-shadow: 0 3px 5px rgb(0 0 0 / 20%);
+  border-color: #e0e0e0;
+  border-radius: 10px;
+  margin: 30px auto;
+  letter-spacing: .01428571em;
+  width:30vw;
+  height: 50px;
+  margin: 20px ;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+.search-container input{
+  outline: none;
+  border: none;
+  font-size: 1.2rem;
+}

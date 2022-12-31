@@ -90,7 +90,7 @@ export function NoteTodo(props) {
   }
   function onSaveNote(ev) {
     ev.preventDefault()
-    props.handleCard(false)
+    !noteToEdit.id && props.handleCard(false)
     console.log(noteToEdit)
     noteService.save(noteToEdit).then(() => props.loadNotes())
     // showSuccessMsg('note saved!')
@@ -122,8 +122,8 @@ export function NoteTodo(props) {
         <option style={{ backgroundColor: '#98f5e1' }} value="#98f5e1"></option>
         <option style={{ backgroundColor: '#b9fbc0' }} value="#b9fbc0"></option>
       </select>
-
-      {/* <label>
+      <div className="add-note-btn-bottom">
+        {/* <label>
         <input
           type="checkbox"
           name="checkbox"
@@ -133,17 +133,18 @@ export function NoteTodo(props) {
         pinned?
       </label> */}
 
-      <div >
-        {/* ADD/SAVE button */}
-        <button type="submit">
-          {noteToEdit.id ? <i className="fa-regular fa-down-to-bracket"></i> : <i className="fa-regular fa-plus"></i>}
-        </button>
-        {/* CLOSE BUTTON */}
-        <button type="button" onClick={() => props.handleCard(false)}> <Link to="/note"><i className="fa-sharp fa-solid fa-xmark"></i></Link> </button>
+        <div >
+          {/* ADD/SAVE button */}
+          <button type="submit">
+            {noteToEdit.id ? <i className="fa-regular fa-pen-to-square"></i> : <i className="fa-regular fa-plus"></i>}
+          </button>
+          {/* CLOSE BUTTON */}
+          <button type="button" onClick={() => props.handleCard(false)}> <Link to="/note"><i className="fa-sharp fa-solid fa-xmark"></i></Link> </button>
 
-        {/* PIN BUTTON */}
-        <button onClick={handlePinned} type="button"><i style={(isPinned) ? { color: "black" } : { color: " #8a8a8a" }} className="fa-sharp fa-solid fa-map-pin"></i></button>
+          {/* PIN BUTTON */}
+          <button onClick={handlePinned} type="button"><i style={(isPinned) ? { color: "black" } : { color: " #8a8a8a" }} className="fa-sharp fa-solid fa-map-pin"></i></button>
 
+        </div>
       </div>
     </form >
 

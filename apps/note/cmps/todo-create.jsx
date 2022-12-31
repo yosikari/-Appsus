@@ -34,6 +34,7 @@ export function TodoCreate({ addItems }) {
       <input
         type="text"
         placeholder="Add a todo..."
+        id="create-todo"
         value={newItem}
         onChange={(e) => setNewItem(e.target.value)}
       />
