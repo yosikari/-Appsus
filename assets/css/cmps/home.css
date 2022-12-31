@@ -1,0 +1,14 @@
+
+
+.home{
+    display: flex;
+    justify-content: space-around;
+}
+
+.homepage-mails-btn,
+.homepage-notes-btn {
+    height: 10em;
+    object-fit: contain;
+    margin-top: 10em;
+}
+

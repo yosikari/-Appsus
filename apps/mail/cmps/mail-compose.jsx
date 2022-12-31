@@ -10,6 +10,7 @@ export function MailCompose({ onSetSendMail, onSetMails }) {
   const [txt, setTxt] = useState('')
   const [imgSrc, setImg] = useState('')
   const [isEmojiPicker, SetEmojiPicker] = useState(false)
+const emojis = ['😀','😁','😂','🤣','😃','😄','😅','😆','😉','😊','😋','😎','😍','😘','🥰','😗','😙','🥲','🤔','🤩','🤗','🙂','😚','🙄','😶‍🌫️','😶','😑','😐','🤨','😯','🤐','😮','😥','😣','😏']
 
   const elInputRef = useRef(null)
   useEffect(() => {
@@ -116,7 +117,9 @@ export function MailCompose({ onSetSendMail, onSetMails }) {
       <section className="compose-btns">
         <button className="delete-btn" onClick={clearMail}><i className="fa-regular fa-trash-can"></i></button>
         <button className="img-btn" onClick={handleClick}><i className="fa-regular fa-image"></i></button>
-        {isEmojiPicker && <div className="emojiPicker">😀😁😂🤣😃😄😅😆😉😊😋😎😍😘🥰😗😙🥲🤔🤩🤗🙂😚🙄😶‍🌫️😶😑😐🤨😯🤐😮😥😣😏</div>}
+        {isEmojiPicker && <div className="emojiPicker">
+        {emojis.map(emoji =><span key={emoji} className='emoji' onClick={()=>setTxt(txt+emoji)}>{emoji}</span>)}
+          </div>}
         <button className="stiker-btn" onClick={toggleEmojiPicker}><i className="fa-regular fa-face-smile"></i></button>
       </section>
     </section>

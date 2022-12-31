@@ -124,6 +124,12 @@ textarea:focus {
    
 }
 
+
+.emoji:hover{
+    cursor: pointer;
+    background-color: lightgray;
+}
+
 .img-btn { z-index: 1;}
 
 .delete-btn { z-index: 1;}
