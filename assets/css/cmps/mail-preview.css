@@ -17,11 +17,14 @@
 
 .mail-title {
     grid-area: title;
+    overflow: hidden;
+    padding-top: 0.2em;
 
 }
 
 .mail-from {
     grid-area: from;
+    padding-top: 0.5em;
 }
 
 .mail-txt {
@@ -31,6 +34,7 @@
 
 .mail-date {
     grid-area: date;
+    padding-top: 0.5em;
 }
 
 .mail-restore-btn{
@@ -57,9 +61,7 @@ margin-inline-end: 1em;
 
 }
 
-/* .mail-li:hover .mail-mark-btn{
-    margin-right: 13em;
-} */
+
 .mail-li:hover .mail-remove-btn {
     margin-right: 9em;
 }
@@ -78,7 +80,7 @@ margin-inline-end: 1em;
     max-height: 8em;
     background-color: rgb(242, 246, 252);
 
-    grid-template-columns: 0.1fr 2fr 2fr 1fr;
+    grid-template-columns: 0.1fr 0.9fr 2fr 1fr;
     grid-template-rows: 1fr 2.5fr;
     grid-template-areas:
         "star from  title date"
@@ -86,6 +88,12 @@ margin-inline-end: 1em;
     ;
 
 }
+
+.mail-preview.active .mail-date{
+    position: relative;
+    left: 2.8em;
+}
+
 
 .read h2,
 .read h3,
@@ -108,29 +116,14 @@ margin-inline-end: 1em;
 }
 
 
+
 @media(max-width: 600px) {
-
-
-    .mail-li:hover .mail-remove-btn {
-        margin-right: 14.2em;
-    }
-    
-    .mail-li:hover .mail-select-btn {
-        margin-right: 8.7em;
-    }
-
-
-    .mail-preview:hover .mail-date {
-        display: inline;
-        margin-inline-start: 1em;
-    }
 
     .mail-mark-btn,
     .mail-select-btn,
     .mail-remove-btn {
         display: inline;
         padding: 0;
-        line-height: auto;
     }
 
     .mail-select-btn {
@@ -146,6 +139,7 @@ margin-inline-end: 1em;
         max-width: 7em;
         overflow: hidden;
         font-size: 1em;
+        line-height: 1em;
         padding-top: 0.3em;
     }
 
@@ -154,7 +148,8 @@ margin-inline-end: 1em;
         min-width: 5em;
         overflow: hidden;
         font-size: 1em;
-        padding-top: 0.3em;
+        line-height: 1em;
+        padding-top: 0.8em;
     }
 
     .mail-txt {
@@ -182,28 +177,24 @@ margin-inline-end: 1em;
 
     .mail-preview.active {
         max-height: 10em;
-        gap: 0.2em;
+        gap: 0em;
         grid-template-columns: 0.2fr 1fr 0.1fr 0.1fr;
-        grid-template-rows: 0.5fr 0.5fr 2fr;
+        grid-template-rows: 0.5fr 1fr 2fr;
         grid-template-areas:
             "star from remove-btn select-btn"
-            "title title . date"
+            "title title title date"
             "txt txt txt txt";
     }
 
-
-
-
-
-    /* .mail-li:hover .mail-mark-btn{
-        margin-right: 9em;
+    .mail-preview.active .mail-remove-btn{
+       position: relative;
+       left: 9.2em;
     }
-    .mail-li:hover .mail-remove-btn{
-        margin-right: 6em;
-    }
-    .mail-li:hover .mail-select-btn{
-        margin-right: 3em;
-    } */
+
+    .mail-preview.active .mail-select-btn{
+        position: relative;
+        right: -.5em;
+     }
 
 
 }

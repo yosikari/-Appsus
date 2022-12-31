@@ -7,9 +7,9 @@ export function MailSearch({ onSetFilter, onSetSearchType }) {
     const elInputRef = useRef(null)
 
     useEffect(() => {
-       if(!filterByToEdit.title && !filterByToEdit.txt){
-        onSetFilter(filterByToEdit)
-       }
+        if (!filterByToEdit.title && !filterByToEdit.txt) {
+            onSetFilter(filterByToEdit)
+        }
     }, [filterByToEdit])
 
     function handleChange({ target }) {
@@ -30,24 +30,26 @@ export function MailSearch({ onSetFilter, onSetSearchType }) {
         onSetSearchType(searchBy)
     }, [searchBy])
 
-    return <section className="book-filter full main-layout">
+    return <section className="mail-filter">
 
 
-        <section className="filter-btns" onChange={(ev)=>{setSearchBy(ev.target.value)}}>
-            <label htmlFor="title">by title</label><br />
+        <section className="filter-btns" onChange={(ev) => { setSearchBy(ev.target.value) }}>
+            <label htmlFor="title">By title</label><br />
             <input className="filter-title-btn" name="search-by" type="radio" id="title" value="title" />
 
-            <label htmlFor="from">by sender</label><br />
-            <input className="filter-from-btn" name="search-by" type="radio" id="from" value="from"  />
+            <label htmlFor="from">By sender</label><br />
+            <input className="filter-from-btn" name="search-by" type="radio" id="from" value="from" />
 
-            <label htmlFor="date">by date</label><br />
-            <input className="filter-date-btn" name="search-by" type="radio" id="date" value="date"  />
+            <label htmlFor="date">By date</label><br />
+            <input className="filter-date-btn" name="search-by" type="radio" id="date" value="date" />
         </section>
 
 
         <form onSubmit={onSubmitFilter}>
 
-            <input type="text"
+            <input
+                className="mail-search-input"
+                type="text"
                 id="title"
                 name="txt"
                 placeholder={searchBy}
@@ -56,7 +58,8 @@ export function MailSearch({ onSetFilter, onSetSearchType }) {
                 ref={elInputRef}
             />
 
-            <button><i className="fa-solid fa-magnifying-glass"></i></button>
+            <button className="search-btnn"><i className="fa-solid fa-magnifying-glass mail-search-btn"></i></button>
+            <img className='img-mail-hero' src="img/mail-hero.png" alt="" />
         </form>
 
     </section>

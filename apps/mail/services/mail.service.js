@@ -84,12 +84,12 @@ function _createMails() {
     if (!mails || !mails.length) {
         mails.push(_createMail('AliExpress', 'Don\'t miss this SALE', txtDemoData[0], true, '11/12/2022'))
         mails.push(_createMail('Ebay.com', 'SALE SALE SALE!!!', txtDemoData[1], true, '13/08/2022'))
-        mails.push(_createMail('Puki Puk', 'Hello Muki', `asdadsasd asdsasddasasd sdsdasdasda asdsadsdasad sadsadasdasd sadasdsadsda asdsdasdasda sadsdasdasda sadsdasdasad sadsdasadsdasad asdasdsdasadasd asdasdsadsdasad sdasdasdasdasad THANK YOU :)`, true, '17/05/2021'))
-        mails.push(_createMail('AliExpress', 'Your order has being shipped', `asdadsasd asdsasddasasd sdsdasdasda asdsadsdasad sadsadasdasd sadasdsadsda asdsdasdasda sadsdasdasda sadsdasdasad sadsdasadsdasad asdasdsdasadasd asdasdsadsdasad sdasdasdasdasad THANK YOU :)`, true, '12/02/2019'))
-        mails.push(_createMail('Puki Puk', 'Hi Muki lets play!', `asdadsasd asdsasddasasd sdsdasdasda asdsadsdasad sadsadasdasd sadasdsadsda asdsdasdasda sadsdasdasda sadsdasdasad sadsdasadsdasad asdasdsdasadasd asdasdsadsdasad sdasdasdasdasad THANK YOU :)`, true))
-        mails.push(_createMail('AliExpress', 'Your order has being shipped', `asdadsasd asdsasddasasd sdsdasdasda asdsadsdasad sadsadasdasd sadasdsadsda asdsdasdasda sadsdasdasda sadsdasdasad sadsdasadsdasad asdasdsdasadasd asdasdsadsdasad sdasdasdasdasad THANK YOU :)`, true))
-        mails.push(_createMail('AliExpress', 'Your order has being shipped', `asdadsasd asdsasddasasd sdsdasdasda asdsadsdasad sadsadasdasd sadasdsadsda asdsdasdasda sadsdasdasda sadsdasdasad sadsdasadsdasad asdasdsdasadasd asdasdsadsdasad sdasdasdasdasad THANK YOU :)`, true))
-        mails.push(_createMail('Luki Lak', 'new job for you Muki', `asdadsasd asdsasddasasd sdsdasdasda asdsadsdasad sadsadasdasd sadasdsadsda asdsdasdasda sadsdasdasda sadsdasdasad sadsdasadsdasad asdasdsdasadasd asdasdsadsdasad sdasdasdasdasad THANK YOU :)`, true))
+        mails.push(_createMail('Puki Puk', 'Hello Muki', txtDemoData[2], true, '17/05/2021'))
+        mails.push(_createMail('AliExpress', 'Your order has being shipped',txtDemoData[3], true, '12/02/2019'))
+        mails.push(_createMail('Puki Puk', 'Hi Muki lets play!',txtDemoData[4], true,'11/04/2019'))
+        mails.push(_createMail('AliExpress', 'Your order has being shipped', txtDemoData[5], true,'17/01/2020'))
+        mails.push(_createMail('AliExpress', 'Your order has being shipped',txtDemoData[6], true,'11/12/2022'))
+        mails.push(_createMail('Luki Lak', 'new job for you Muki',txtDemoData[7], true,'31/12/2022'))
         utilService.saveToStorage(MAIL_KEY, mails)
     }
 }
