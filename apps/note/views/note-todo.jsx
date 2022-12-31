@@ -1,11 +1,10 @@
+const { useState, useEffect } = React
+const { useNavigate, useParams, Link } = ReactRouterDOM
+
 import { noteService } from "../services/note.service.js"
 import { NoteImg } from "../views/note-img.jsx"
 import { utilService } from "../../../services/util.service.js"
 import { TodoCreate } from "../cmps/todo-create.jsx"
-
-
-const { useState, useEffect } = React
-const { useNavigate, useParams, Link } = ReactRouterDOM
 
 
 
@@ -31,10 +30,10 @@ export function NoteTodo(props) {
         navigate('/note')
       })
   }
+
   function handleChange({ target }) {
     let { value, type, name: field } = target
     //     value = type === 'number' ? +value : value
-
     setNoteToEdit((prevNoteToEdit) => {
       if (field === 'todos-label') {
         return {
@@ -63,6 +62,7 @@ export function NoteTodo(props) {
 
     })
   }
+
   function handlePinned() {
     console.log('pinned', isPinned)
     setIsPinned(prevIsPinned => !prevIsPinned)
@@ -107,9 +107,6 @@ export function NoteTodo(props) {
         onChange={handleChange}
       />
       <TodoCreate todos={todos} addItems={addItems} />
-
-
-
       <select onChange={handleChange} name="colors" id="colors" multiple>
         <option style={{ backgroundColor: '#fbf8cc' }} value="#fbf8cc"></option>
         <option style={{ backgroundColor: '#fde4cf' }} value="#fde4cf"></option>
@@ -123,16 +120,6 @@ export function NoteTodo(props) {
         <option style={{ backgroundColor: '#b9fbc0' }} value="#b9fbc0"></option>
       </select>
       <div className="add-note-btn-bottom">
-        {/* <label>
-        <input
-          type="checkbox"
-          name="checkbox"
-          value={noteToEdit.isPinned}
-          onChange={handleChange}
-        />
-        pinned?
-      </label> */}
-
         <div >
           {/* ADD/SAVE button */}
           <button type="submit">
@@ -143,10 +130,8 @@ export function NoteTodo(props) {
 
           {/* PIN BUTTON */}
           <button onClick={handlePinned} type="button"><i style={(isPinned) ? { color: "black" } : { color: " #8a8a8a" }} className="fa-sharp fa-solid fa-map-pin"></i></button>
-
         </div>
       </div>
     </form >
-
   </div >
 }

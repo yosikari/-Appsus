@@ -29,10 +29,12 @@ export function App() {
                 <Route element={<MailIndex />} path="/mail" >
                 </Route>
                 <Route element={<MailDetails />} path="/mail/:mailId" />
-                <Route element={<NoteIndex />} path="/note" >
-                    <Route element={<NoteAddForm />} path="/note/add" />
-                </Route>
+
+                <Route element={<NoteIndex />} path="/note" />
                 <Route element={<NoteAddForm />} path="/note/edit/" />
+                <Route element={<NoteAddForm />} path="/note/edit/:noteId" />
+
+                <Route element={<NoteAddForm />} path="/note/edit/:noteId" />
                 <Route element={<NoteTxt />} path="/note/edit/txt/:noteId" />
                 <Route element={<NoteImg />} path="/note/edit/img/:noteId" />
                 <Route element={<NoteTodo />} path="/note/edit/todo/:noteId" />

@@ -9,7 +9,6 @@
   box-shadow: 0 3px 5px rgb(0 0 0 / 20%);
   border-color: #e0e0e0;
   border-radius: 10px
- 
 }
 .note-add-card{
   display: grid;
@@ -21,9 +20,6 @@
   height: 50px;
   margin-left: 10px;
   justify-self: start;
-
-
-
 }
 .note-input-txt-card i{
   color: #8a8a8a;
@@ -34,8 +30,8 @@ input:focus{
 }
 select:focus{
   background:transparent;
-      border:none;
-      outline: none !important;
+  border:none;
+  outline: none !important;
 }
 .add-note-text-input{
   border:none;
@@ -82,6 +78,68 @@ select:focus{
 .todo-create-container{
   height: 200px;
 }
+.add-note-btn-bottom{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+}
+#add-note-img{
+width: 200px;
+}
+#btnimg{
+  font-size: 32px;
+}
+@media (max-width: 780px) {
+  .note-input-txt-card {
+    font-size: 1rem;
+    width: 350px;
+    min-height: 200px;
+    margin: 50px auto;
+    box-shadow: 0 3px 5px rgb(0 0 0 / 20%);
+    border-color: #e0e0e0;
+    border-radius: 10px
+  }
+  
+  .note-input-txt-card input{
+    font-size: 1rem;
+    height: 50px;
+    margin-left: 10px;
+    justify-self: start;
+  }
+  .note-input-txt-card i{
+    color: #8a8a8a;
+    font-size: 1.3rem;
+  }
+  
+  .note-add-img{
+    width: 150px;
+    justify-self: center;
+  }
+  #colors{
+    width: fit-content;
+    border: none;
+    overflow: hidden;
+    height: 60px;
+    border-bottom: #e0e0e0 1px solid ;
+    margin-bottom: 20px;
+    margin-top: 30px;
+  }
+  
+  #colors option{
+    margin-right: 5px;
+    display: inline-block;
+    cursor: pointer;
+    border: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+  }
+  
+  .todo-create-container{
+    height: 200px;
+  }
   .add-note-btn-bottom{
     display: flex;
     justify-content: space-around;
@@ -90,10 +148,9 @@ select:focus{
     margin: 0;
   }
   #add-note-img{
-    /* display: block !important; */
     width: 200px;
   }
   #btnimg{
-  font-size: 32px;
+    font-size: 32px;
   }
-  
+}

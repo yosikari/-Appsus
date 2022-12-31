@@ -290,7 +290,6 @@ function getEmptyNoteImg() {
       backgroundColor: "ffffff"
     },
   }
-  console.log(note)
   return note
 }
 function getEmptyNoteTodo() {

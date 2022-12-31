@@ -21,11 +21,56 @@ img {
     width: 100%;
     object-fit: cover;
 }
-.horse-logo{
+/* homepage */
+.home h1{
+    margin: 20px;
+    font-size: 3rem;
+    font-family: Roboto-Regular;
+}
+/* HEADER */
+.horse-icon{
     margin-left: 15px;
     font-size: 3rem;
+    color: #8a8a8a;
+    margin-right: 20px;
+}
+.horse-logo{
+   font-size: 3rem;
+   font-family: Roboto-Regular;
+   color: #8a8a8a;
+   
 }
 .homepage-icons{
+    font-size: 1.5rem;
+    color: #8a8a8a;
+}
+/* ABOUT */
+.about h1{
+    font-family: Roboto-Regular;
+    font-size: 2rem;
+    margin-left: 15px;
+    margin-top: 20px;
+    color: #8a8a8a;
+}
+.about-container{
+margin-top: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.about-person-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.about-img{
+    border-radius: 50%;
+    width: 75%;
+}
+.about-person-container h3{
+    margin-top: 20px;
+    font-family: Roboto-Regular;
     font-size: 1.5rem;
     color: #8a8a8a;
 }

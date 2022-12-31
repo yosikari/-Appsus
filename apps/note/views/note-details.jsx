@@ -40,6 +40,7 @@ export function NoteDetails(props) {
 
     <div className="note-details-btns">
       <button onClick={onGoBack}><i className="fa-solid fa-rotate-left"></i></button>
+
       {note.type === 'note-txt' && <button><Link to={`/note/edit/txt/${note.id}`}><i className="fa-regular fa-pen-to-square"></i></Link></button>}
       {note.type === 'note-img' && <button><Link to={`/note/edit/img/${note.id}`}><i className="fa-regular fa-pen-to-square"></i></Link></button>}
       {note.type === 'note-todo' && <button><Link to={`/note/edit/todo/${note.id}`}><i className="fa-regular fa-pen-to-square"></i></Link></button>}

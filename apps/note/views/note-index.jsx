@@ -1,9 +1,11 @@
 const { useState, useEffect } = React
-const { Outlet, Link } = ReactRouterDOM
+const { useNavigate, useParams, Link } = ReactRouterDOM
+
 import { NoteFilter } from "../cmps/note-filter.jsx"
 import { NoteList } from "../cmps/note-list.jsx"
 import { noteService } from "../services/note.service.js"
 import { NoteAddForm } from "./note-add-form.jsx"
+import { NoteEdit } from "./note-edit.jsx"
 // import { showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js';
 
 export function NoteIndex() {
@@ -11,7 +13,7 @@ export function NoteIndex() {
 
     const [isLoading, setIsLoading] = useState(false)
     const [notes, setNotes] = useState([]) // all the cards
-
+    const { noteId } = useParams()
     useEffect(() => {
         loadNotes()
     }, [filterBy])
@@ -25,7 +27,6 @@ export function NoteIndex() {
             setNotes(notes)
             setIsLoading(false)
         })
-
     }
     function onRemoveNote(noteId) {
         noteService.remove(noteId)
@@ -36,18 +37,9 @@ export function NoteIndex() {
             })
         console.log('remove')
     }
+
     return <div>
         <NoteFilter onSetFilter={onSetFilter} />
-
-        {/* <nav>
-            <Link to="/note">Index</Link> |
-            {/* <button> <Link to="/note/add">add</Link> </button> */}
-        {/* </nav> * /} */}
-        {/* < div className="nested-route" >
-            <Outlet />
-        </div > */}
-        {/* <button> <Link to="/note/add">add</Link> </button> */}
-        {/* <NoteAdd loadNotes={loadNotes} /> */}
         <NoteAddForm loadNotes={loadNotes} />
 
         {/* <button><Link to="/note/edit">Add note</Link></button> */}
