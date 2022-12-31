@@ -4,8 +4,16 @@ const { Outlet, Link, NavLink } = ReactRouterDOM
 export function NotePreview({ note }) {
   const [cmpType, setCmpType] = useState(note.type)
 
-  return <article className="note-preview" style={{ backgroundColor: note.style.backgroundColor }}>
+  return <article>
     <DynamicCmp note={note} cmpType={cmpType} />
+
+    {/* <div className={"note-preivew-btns"}>
+      <button onClick={() => onRemoveNote(note.id)}><i className="fa-regular fa-trash-can"></i></button>
+      <button> <Link to={`/note/${note.id}`}><i class="fa-solid fa-list"></i></Link> </button>
+      {note.type === 'note-txt' && <button><Link to={`/note/edit/txt/${note.id}`}><i class="fa-regular fa-pen-to-square"></i></Link></button>}
+      {note.type === 'note-img' && <button><Link to={`/note/edit/img/${note.id}`}><i class="fa-regular fa-pen-to-square"></i></Link></button>}
+      {note.type === 'note-todo' && <button><Link to={`/note/edit/todo/${note.id}`}><i class="fa-regular fa-pen-to-square"></i></Link></button>}
+    </div> */}
   </article>
 }
 
@@ -20,22 +28,19 @@ function DynamicCmp(props) {//props is the note.type
   }
 }
 function NoteTxt(props) {
-  // console.log(props.note.isPinned)
-  return <div className="prev-note-txt-card" style={{ backgroundColor: props.note.style.backgroundColor }} >
-    <h6> {props.note.info.txt}</h6>
+  return <div><h6> {props.note.info.txt}</h6>
     {props.note.isPinned && <h6><i className="fa-sharp fa-solid fa-map-pin"></i> </h6>}
   </div>
 }
 function NoteImg(props) {
-  return <div className="prev-note-txt-card" style={{ backgroundColor: props.note.style.backgroundColor }} >
+  return <div>
     <img className="note-preview-img" src={props.note.info.url} />
     <h6> {props.note.info.title}</h6>
     {props.note.isPinned && <h6><i className="fa-sharp fa-solid fa-map-pin"></i></h6>}
   </div>
 }
 function NoteTodo(props) {
-  // console.log(props)
-  return <div className="prev-note-txt-card" style={{ backgroundColor: props.note.style.backgroundColor }} >
+  return <div>
     <h6> {props.note.info.label}</h6>
     <p>{props.note.info.todos.map(todo => <li key={todo.id}>{todo.txt}</li>)}</p>
     {props.note.isPinned && <h6><i className="fa-sharp fa-solid fa-map-pin"></i></h6>}

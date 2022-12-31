@@ -21,3 +21,11 @@ img {
     width: 100%;
     object-fit: cover;
 }
+.horse-logo{
+    margin-left: 15px;
+    font-size: 3rem;
+}
+.homepage-icons{
+    font-size: 1.5rem;
+    color: #8a8a8a;
+}

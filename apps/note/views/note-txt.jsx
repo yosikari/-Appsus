@@ -1,12 +1,9 @@
-import { noteService } from "../services/note.service.js"
-import { NoteTodo } from "../views/note-todo.jsx"
-import { NoteImg } from "../views/note-img.jsx"
-
-
 const { useState, useEffect } = React
 const { useNavigate, useParams, Link } = ReactRouterDOM
 
-
+import { noteService } from "../services/note.service.js"
+import { NoteTodo } from "../views/note-todo.jsx"
+import { NoteImg } from "../views/note-img.jsx"
 
 export function NoteTxt(props) {
   console.log(props)
@@ -29,9 +26,7 @@ export function NoteTxt(props) {
       })
   }
   function handlePinned() {
-    console.log('pinned', isPinned)
     setIsPinned(prevIsPinned => !prevIsPinned)
-    console.log('pinned', isPinned)
     setNoteToEdit(prevNoteToEdit => ({
       ...prevNoteToEdit,
       isPinned: !isPinned
@@ -42,7 +37,6 @@ export function NoteTxt(props) {
   function handleChange({ target }) {
     let { value, type, name: field } = target
     //     value = type === 'number' ? +value : value
-
     setNoteToEdit((prevNoteToEdit) => {
       if (field === 'text') {
         return {
@@ -54,14 +48,12 @@ export function NoteTxt(props) {
       if (field === 'checkbox') {
         return {
           ...prevNoteToEdit,
-          // info: { ...prevNoteToEdit.info, txt: value },
           isPinned: true
         }
       }
       if (field === 'colors') {
         return {
           ...prevNoteToEdit,
-          // info: { ...prevNoteToEdit.info, txt: value },
           style: { backgroundColor: value }
         }
       }
@@ -70,7 +62,7 @@ export function NoteTxt(props) {
 
   function onSaveNote(ev) {
     ev.preventDefault()
-    props.handleCard(false)
+    !noteToEdit.id && props.handleCard(false)
     noteService.save(noteToEdit).then(() => props.loadNotes())
     // showSuccessMsg('note saved!')
     navigate('/note')
@@ -88,9 +80,6 @@ export function NoteTxt(props) {
         onChange={handleChange}
       />
 
-
-
-
       <select onChange={handleChange} name="colors" id="colors" multiple>
         <option style={{ backgroundColor: '#fbf8cc' }} value="#fbf8cc"></option>
         <option style={{ backgroundColor: '#fde4cf' }} value="#fde4cf"></option>
@@ -106,24 +95,13 @@ export function NoteTxt(props) {
 
 
       < div className="add-note-btn-bottom">
-        {/* <label>
-          <input
-            style={{ float: 'left', borderColor: 'red', border: '3px' }}
-            id="checkbox-btn"
-            type="checkbox"
-            name="checkbox"
-            checked={noteToEdit.isPinned}
-            onChange={handleChange}
-          />
-          Pinned
-        </label> */}
+
         <div >
-          <button type="submit"> {noteToEdit.id ? <i className="fa-regular fa-down-to-bracket"></i> : <i className="fa-regular fa-plus"></i>}</button>
+          <button type="submit"> {noteToEdit.id ? <i className="fa-regular fa-pen-to-square"></i> : <i className="fa-regular fa-plus"></i>}</button>
           <button type="button" onClick={() => props.handleCard(false)}> <Link to="/note"><i className="fa-sharp fa-solid fa-xmark"></i></Link> </button>
-          {/* PIN BUTTON */}
-          <button onClick={handlePinned} type="button"><i style={(isPinned) ? { color: "black" } : { color: " #8a8a8a" }} className="fa-sharp fa-solid fa-map-pin"></i></button>        </div>
+          <button onClick={handlePinned} type="button"><i style={(isPinned) ? { color: "black" } : { color: " #8a8a8a" }} className="fa-sharp fa-solid fa-map-pin"></i></button>
+        </div>
       </div>
     </form >
-
   </div >
 }

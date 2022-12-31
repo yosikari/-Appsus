@@ -4,7 +4,8 @@ import { noteService } from "../services/note.service.js"
 // import { showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js';
 
 
-export function NoteDetails() {
+export function NoteDetails(props) {
+  console.log(props)
   const [note, setNote] = useState(null)
   const { noteId } = useParams()
   const navigate = useNavigate()
@@ -28,15 +29,20 @@ export function NoteDetails() {
 
   if (!note) return <div>Loading...</div>
   return <section className="note-details">
-    <h2>note id: {note.id}</h2>
-    <h2>note type: {note.type}</h2>
 
-    <h3> {note.info.title}</h3>
-    <img src={note.info.url} />
-    <button onClick={onGoBack}>Go Back</button>
-    {note.type === 'note-txt' && <button><Link to={`/note/edit/txt/${note.id}`}>Edit</Link></button>}
-    {note.type === 'note-img' && <button><Link to={`/note/edit/img/${note.id}`}>Edit</Link></button>}
-    {note.type === 'note-todo' && <button><Link to={`/note/edit/todo/${note.id}`}>Edit</Link></button>}
 
+    {note.type === 'note-txt' && <h1 className="note-details-title"> {note.info.txt}</h1>}
+    {note.type === 'note-img' && <h1 className="note-details-title"> {note.info.title}</h1>}
+    {note.type === 'note-img' && <img className="note-details-img" src={note.info.url} />}
+    {note.type === 'note-todo' && <h1 className="note-details-title"> {note.info.label}</h1>}
+    {note.type === 'note-todo' && <p> {note.info.todos.map(todo => <li key={todo.id}>{todo.txt}</li>)}</p>}
+
+
+    <div className="note-details-btns">
+      <button onClick={onGoBack}><i className="fa-solid fa-rotate-left"></i></button>
+      {note.type === 'note-txt' && <button><Link to={`/note/edit/txt/${note.id}`}><i className="fa-regular fa-pen-to-square"></i></Link></button>}
+      {note.type === 'note-img' && <button><Link to={`/note/edit/img/${note.id}`}><i className="fa-regular fa-pen-to-square"></i></Link></button>}
+      {note.type === 'note-todo' && <button><Link to={`/note/edit/todo/${note.id}`}><i className="fa-regular fa-pen-to-square"></i></Link></button>}
+    </div>
   </section>
 }

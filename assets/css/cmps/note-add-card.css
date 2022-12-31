@@ -3,26 +3,25 @@
   font-size: 1.2rem;
   font-family: roboto-regular;
   letter-spacing: .01428571em;
-  
   width: 500px;
   min-height: 200px;
   margin: 100px auto;
   box-shadow: 0 3px 5px rgb(0 0 0 / 20%);
   border-color: #e0e0e0;
-  
-  
   border-radius: 10px
  
 }
 .note-add-card{
-  display: flex;
-  flex-direction: column;
+  display: grid;
   justify-content: center;
   align-items: center;
 }
 .note-input-txt-card input{
   font-size: 1.2rem;
   height: 50px;
+  margin-left: 10px;
+  justify-self: start;
+
 
 
 }
@@ -38,12 +37,30 @@ select:focus{
       border:none;
       outline: none !important;
 }
-
-
+.add-note-text-input{
+  border:none;
+  justify-self: start;
+}
+#note-url {
+  border:none;
+  justify-self: start;
+}
+#note-text{
+  border: none;
+}
+#todos-label{
+  border: none;
+  justify-self: start;
+}
+#create-todo{
+  border: none;
+  justify-self: start;
+}
 .note-add-img{
   width: 200px;
 }
 #colors{
+  width: fit-content;
   border: none;
   overflow: hidden;
   height: 60px;
@@ -65,17 +82,6 @@ select:focus{
 .todo-create-container{
   height: 200px;
 }
-/* #chechbox-btn:checked{} */
-input[type="checkbox"] {
-  /* display: none; */
-  width: 20px;
-  float: none;
-}
-
-  /* content:'\f276' */
-
-  /* appearance:none */
-
   .add-note-btn-bottom{
     display: flex;
     justify-content: space-around;
@@ -90,7 +96,4 @@ input[type="checkbox"] {
   #btnimg{
   font-size: 32px;
   }
-  .add-to-do-container{
-    display: flex;
-    align-items: center;
-  }
+  

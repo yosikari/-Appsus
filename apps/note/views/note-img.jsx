@@ -74,7 +74,7 @@ export function NoteImg(props) {
   }
   function onSaveNote(ev) {
     ev.preventDefault()
-    props.handleCard(false)
+    !noteToEdit.id && props.handleCard(false)
     noteService.save(noteToEdit).then(() => props.loadNotes())
     // showSuccessMsg('note saved!')
     navigate('/note')
@@ -128,7 +128,7 @@ export function NoteImg(props) {
       {/* <label htmlFor="url">URL : </label> */}
       <input type="text"
         name="url"
-        id="url"
+        id="note-url"
         placeholder="Enter your url..."
         value={noteToEdit.info.url}
         onChange={handleChange}
@@ -147,7 +147,7 @@ export function NoteImg(props) {
       {/* <label htmlFor="text">Title : </label> */}
       <input type="text"
         name="text"
-        id="text"
+        id="note-text"
         placeholder="Enter text..."
         value={noteToEdit.info.title}
         onChange={handleChange}
@@ -182,7 +182,7 @@ export function NoteImg(props) {
         </label> */}
         <div >
 
-          <button>{noteToEdit.id ? <i className="fa-regular fa-down-to-bracket"></i> : <i className="fa-regular fa-plus"></i>}</button>
+          <button>{noteToEdit.id ? <i className="fa-regular fa-pen-to-square"></i> : <i className="fa-regular fa-plus"></i>}</button>
           <button type="button" onClick={() => props.handleCard(false)}> <Link to="/note"><i className="fa-sharp fa-solid fa-xmark"></i></Link> </button>
           <button onClick={handlePinned} type="button"><i style={(isPinned) ? { color: "black" } : { color: " #8a8a8a" }} className="fa-sharp fa-solid fa-map-pin"></i></button>
 

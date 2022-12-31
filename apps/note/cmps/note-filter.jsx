@@ -8,6 +8,7 @@ export function NoteFilter({ onSetFilter }) {
   function handleChange({ target }) {
     let { value, name: field, type } = target
     console.log(value)
+    onSetFilter((prevFilter) => ({ ...prevFilter, txt: value }))
 
     value = (type === 'number') ? +value : value
     setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }))
@@ -18,8 +19,8 @@ export function NoteFilter({ onSetFilter }) {
     onSetFilter(filterByToEdit)
     console.log('filter by ', filterByToEdit)
   }
-  return <div className="filter-container">
-
+  return <div className="search-container">
+    <button><i className="fa-sharp fa-solid fa-magnifying-glass"></i></button>
     <form onSubmit={onSubmitFilter}>
       <input type="text"
         name="txt"
@@ -31,7 +32,7 @@ export function NoteFilter({ onSetFilter }) {
 
 
 
-      <button><i className="fa-regular fa-magnifying-glass"></i></button>
+
     </form>
   </div>
-} <i className="fa-regular fa-magnifying-glass"></i>
+} 

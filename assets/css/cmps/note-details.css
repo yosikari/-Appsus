@@ -1,0 +1,28 @@
+.note-details{
+  margin-top: 30px;
+  font-size: 2rem;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+.note-details i{
+  font-size: 1.5rem;
+  color: #8a8a8a;
+  
+}
+.note-details-btns{
+  margin-top: 30px;
+  width: 30vw;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid rgb(212, 211, 211);
+  padding-top: 20px;
+}
+.note-details-title{
+  margin-bottom: 30px;
+}
+
+.note-details-img{
+  width: 40vw;
+}
