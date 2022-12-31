@@ -28,6 +28,10 @@ img {
     font-family: Roboto-Regular;
 }
 /* HEADER */
+.app-header{
+    display: flex;
+    align-items: center;
+}
 .horse-icon{
     margin-left: 15px;
     font-size: 3rem;
@@ -73,4 +77,38 @@ margin-top: 50px;
     font-family: Roboto-Regular;
     font-size: 1.5rem;
     color: #8a8a8a;
+}
+@media (max-width: 780px) {
+    .horse-icon{
+        margin-left: 15px;
+        font-size: 1.5rem;
+        color: #8a8a8a;
+        margin-right: 10px;
+    }
+    .horse-logo{
+       font-size: 1rem;
+       font-family: Roboto-Regular;
+       color: #8a8a8a;
+       
+    }
+    .homepage-icons{
+        font-size: 1rem;
+        color: #8a8a8a;
+    }
+    .about-container{
+        margin-top: 50px;
+            display: flex;
+            flex-direction: column-reverse;
+            justify-content: space-around;
+            align-items: center;
+        }  
+        .about-person-container h3{
+            margin-top: 40px;
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            font-family: Roboto-Regular;
+            font-size: 1rem;
+            color: #8a8a8a;
+            border-bottom: 1px solid #d9d8d8;
+        }
 }
