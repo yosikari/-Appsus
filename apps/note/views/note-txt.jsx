@@ -2,8 +2,6 @@ const { useState, useEffect } = React
 const { useNavigate, useParams, Link } = ReactRouterDOM
 
 import { noteService } from "../services/note.service.js"
-import { NoteTodo } from "../views/note-todo.jsx"
-import { NoteImg } from "../views/note-img.jsx"
 
 export function NoteTxt(props) {
   console.log(props)
@@ -25,6 +23,7 @@ export function NoteTxt(props) {
         navigate('/note')
       })
   }
+
   function handlePinned() {
     setIsPinned(prevIsPinned => !prevIsPinned)
     setNoteToEdit(prevNoteToEdit => ({
@@ -67,6 +66,7 @@ export function NoteTxt(props) {
     // showSuccessMsg('note saved!')
     navigate('/note')
   }
+
   return <div className="note-input-txt-card">
     <form className="note-add-card" onSubmit={onSaveNote}>
       {/* <label htmlFor="text">Your Text : </label> */}
@@ -95,7 +95,6 @@ export function NoteTxt(props) {
 
 
       < div className="add-note-btn-bottom">
-
         <div >
           <button type="submit"> {noteToEdit.id ? <i className="fa-regular fa-pen-to-square"></i> : <i className="fa-regular fa-plus"></i>}</button>
           <button type="button" onClick={() => props.handleCard(false)}> <Link to="/note"><i className="fa-sharp fa-solid fa-xmark"></i></Link> </button>

@@ -9,10 +9,10 @@ export function NotePreview({ note }) {
 
     {/* <div className={"note-preivew-btns"}>
       <button onClick={() => onRemoveNote(note.id)}><i className="fa-regular fa-trash-can"></i></button>
-      <button> <Link to={`/note/${note.id}`}><i class="fa-solid fa-list"></i></Link> </button>
-      {note.type === 'note-txt' && <button><Link to={`/note/edit/txt/${note.id}`}><i class="fa-regular fa-pen-to-square"></i></Link></button>}
-      {note.type === 'note-img' && <button><Link to={`/note/edit/img/${note.id}`}><i class="fa-regular fa-pen-to-square"></i></Link></button>}
-      {note.type === 'note-todo' && <button><Link to={`/note/edit/todo/${note.id}`}><i class="fa-regular fa-pen-to-square"></i></Link></button>}
+      <button> <Link to={`/note/${note.id}`}><i className="fa-solid fa-list"></i></Link> </button>
+      {note.type === 'note-txt' && <button><Link to={`/note/edit/txt/${note.id}`}><i className="fa-regular fa-pen-to-square"></i></Link></button>}
+      {note.type === 'note-img' && <button><Link to={`/note/edit/img/${note.id}`}><i className="fa-regular fa-pen-to-square"></i></Link></button>}
+      {note.type === 'note-todo' && <button><Link to={`/note/edit/todo/${note.id}`}><i className="fa-regular fa-pen-to-square"></i></Link></button>}
     </div> */}
   </article>
 }

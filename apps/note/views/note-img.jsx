@@ -6,11 +6,10 @@ export function NoteImg(props) {
 
   const [noteToEdit, setNoteToEdit] = useState(noteService.getEmptyNoteImg())
   const [isPinned, setIsPinned] = useState(false)
-
   const [imgSrc, setImg] = useState('')
   const { noteId } = useParams()
-
   const navigate = useNavigate()
+
   useEffect(() => {
     if (!noteId) return
     loadNote()
@@ -27,7 +26,6 @@ export function NoteImg(props) {
 
   function handleChange({ target }) {
     let { value, type, name: field, files } = target
-
     setNoteToEdit((prevNoteToEdit) => {
       if (field === 'text') {
         return {
@@ -59,7 +57,6 @@ export function NoteImg(props) {
           style: { backgroundColor: value }
         }
       }
-
     })
   }
   function handlePinned() {
@@ -80,7 +77,6 @@ export function NoteImg(props) {
     navigate('/note')
   }
 
-
   //---------------UPLOAD IMG TO BASE 64-----------------------
   const inputRef = useRef(null);
 
@@ -89,7 +85,6 @@ export function NoteImg(props) {
   }
 
   const handleFileChange = event => {
-
     const file = event.target.files[0];
     getBase64(file).then(base64 => {
       setImg(base64)
@@ -99,7 +94,6 @@ export function NoteImg(props) {
         info: { ...prevNoteToEdit.info, url: base64 },
       }))
     })
-
   }
 
   const getBase64 = (file) => {
@@ -110,18 +104,11 @@ export function NoteImg(props) {
       reader.readAsDataURL(file);
     })
   }
-
   //-----------------------------------------------------------
-
-
 
   return <div className="note-input-txt-card">
     <div >
-
-
-
     </div>
-
     <form className="note-add-card" onSubmit={onSaveNote}>
       {imgSrc && <img id="add-note-img" src={imgSrc} />}
       <button type="button" onClick={handleImg}> <i id="btnimg" className="fa-regular fa-image fa-10x"></i></button>
@@ -134,7 +121,6 @@ export function NoteImg(props) {
         onChange={handleChange}
       />
       <div>
-
         <input
           name='file'
           style={{ display: 'none' }}
@@ -153,8 +139,6 @@ export function NoteImg(props) {
         onChange={handleChange}
       />
 
-
-
       <select onChange={handleChange} name="colors" id="colors" multiple>
         <option style={{ backgroundColor: '#fbf8cc' }} value="#fbf8cc"></option>
         <option style={{ backgroundColor: '#fde4cf' }} value="#fde4cf"></option>
@@ -169,25 +153,11 @@ export function NoteImg(props) {
       </select>
 
       <div className="add-note-btn-bottom">
-        {/* <label>
-          <input
-            style={{ float: 'left', borderColor: 'red', border: '3px' }}
-            id="checkbox-btn"
-            type="checkbox"
-            name="checkbox"
-            checked={noteToEdit.isPinned}
-            onChange={handleChange}
-          />
-          Pinned
-        </label> */}
         <div >
-
           <button>{noteToEdit.id ? <i className="fa-regular fa-pen-to-square"></i> : <i className="fa-regular fa-plus"></i>}</button>
           <button type="button" onClick={() => props.handleCard(false)}> <Link to="/note"><i className="fa-sharp fa-solid fa-xmark"></i></Link> </button>
           <button onClick={handlePinned} type="button"><i style={(isPinned) ? { color: "black" } : { color: " #8a8a8a" }} className="fa-sharp fa-solid fa-map-pin"></i></button>
-
         </div>
-
       </div>
     </form >
   </div >

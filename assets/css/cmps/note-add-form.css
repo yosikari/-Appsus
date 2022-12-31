@@ -5,7 +5,6 @@
   box-shadow: 0 3px 5px rgb(0 0 0 / 20%);
   border-color: #e0e0e0;
   border-radius: 10px;
-  /* color: #202124; */
   margin: 30px auto;
   letter-spacing: .01428571em;
   display: flex;
@@ -13,10 +12,7 @@
   align-items: center;
   width: 45vw;
   min-height: 28px;
-  
   padding-left: 10px;
- 
-
 }
 .add-note-btn-container i{
   color: #8a8a8a;
@@ -31,15 +27,15 @@
 @media (max-width: 780px) {
 .add-note-btn-container{
   font-size: 0.8rem;
-  width: 70vw;
+  width: 50vw;
   padding-right: 20px;
 }
 .add-note-btns{
   display: flex;
   width: 15vw;
 }
-  .add-note-btn-container i{
-    color: #8a8a8a;
-    font-size: 1rem;
-  }
+.add-note-btn-container i{
+  color: #8a8a8a;
+  font-size: 1rem;
+}
 }
