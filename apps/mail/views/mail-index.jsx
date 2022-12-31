@@ -99,7 +99,7 @@ export function MailIndex() {
             {!isLoading && <MailList mails={mails} onRemoveMail={onRemoveMail} onMarkMail={onMarkMail} loadMails={loadMails} onRestoreMail= {onRestoreMail}/>}
             {isLoading && <div>Loading...</div>}
             {!mails.length && <div>No mails to show...</div>}
-            {!isSendMail && <button className="send-btn" onClick={() => { setSendMail(!isSendMail) }}>SendMail</button>}
+            {!isSendMail && <button className="send-btn" onClick={() => { setSendMail(!isSendMail) }}>New Mail <i className="fa-solid fa-pen new-mail"></i></button>}
             {isSendMail && <MailCompose onSetSendMail={setSendMail} onSetMails={loadMails} />}
             <UserMsg />
         </div>

@@ -1,5 +1,6 @@
 import { mailService } from "../services/mail.service.js"
 
+
 const { useState, useEffect, useRef } = React
 
 export function MailCompose({ onSetSendMail, onSetMails }) {
@@ -8,6 +9,7 @@ export function MailCompose({ onSetSendMail, onSetMails }) {
   const [title, setTitle] = useState('')
   const [txt, setTxt] = useState('')
   const [imgSrc, setImg] = useState('')
+  const [isEmojiPicker, SetEmojiPicker] = useState(false)
 
   const elInputRef = useRef(null)
   useEffect(() => {
@@ -20,6 +22,11 @@ export function MailCompose({ onSetSendMail, onSetMails }) {
     let newMail = mailService.getEmptyMail(email, title, txt, false, imgSrc)
     mailService.save(newMail).then(onSetMails)
     onSetSendMail(false)
+  }
+
+
+  function toggleEmojiPicker() {
+    SetEmojiPicker(!isEmojiPicker)
   }
 
   //---------------UPLOAD IMG TO BASE 64-----------------------
@@ -49,6 +56,14 @@ export function MailCompose({ onSetSendMail, onSetMails }) {
   //-----------------------------------------------------------
 
 
+
+  function clearMail() {
+    setTxt('')
+    setEmail('')
+    setTitle('')
+  }
+
+
   return <div className="mail-compose">
     <section>
       <section className="compose-header">
@@ -66,7 +81,7 @@ export function MailCompose({ onSetSendMail, onSetMails }) {
         />
         <hr className="compose-hr" />
 
-        <input  className="compose-input" type="title"
+        <input className="compose-input" type="title"
           id="title"
           name="title"
           placeholder="Title"
@@ -82,7 +97,7 @@ export function MailCompose({ onSetSendMail, onSetMails }) {
           onChange={() => setTxt(event.target.value)}
         />
 
-        <button className="send-btn">Send</button>
+        <button className="mail-send-btn">Send</button>
       </form>
 
       {imgSrc && <img className="img-preview" src={imgSrc} />}
@@ -96,10 +111,13 @@ export function MailCompose({ onSetSendMail, onSetMails }) {
         />
       </div>
 
+
+
       <section className="compose-btns">
-        <button className="delete-btn"><i className="fa-regular fa-trash-can"></i></button>
+        <button className="delete-btn" onClick={clearMail}><i className="fa-regular fa-trash-can"></i></button>
         <button className="img-btn" onClick={handleClick}><i className="fa-regular fa-image"></i></button>
-        <button className="stiker-btn"><i className="fa-regular fa-face-smile"></i></button>
+        {isEmojiPicker && <div className="emojiPicker">😀😁😂🤣😃😄😅😆😉😊😋😎😍😘🥰😗😙🥲🤔🤩🤗🙂😚🙄😶‍🌫️😶😑😐🤨😯🤐😮😥😣😏</div>}
+        <button className="stiker-btn" onClick={toggleEmojiPicker}><i className="fa-regular fa-face-smile"></i></button>
       </section>
     </section>
 

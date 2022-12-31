@@ -2,32 +2,44 @@
     top: 0;
     z-index: 555;
     display: flex;
+    justify-content: space-around;
     height: 5vh;
     width: 100vw;
-    background-color: rgb(219, 219, 219);
-    /* background-color: rgb(246, 248, 252);
- */
+    background-color: rgb(246, 248, 252);
+    border-bottom: 1px solid;
+    padding: .5em;
+    padding: 0;
 }
 
-.mail-sidebar-all {
-    min-width: 10vw;
-}
+/* .mail-sidebar-all {}
 
-.mail-sidebar-sent {
-    min-width: 10vw;
-}
+.mail-sidebar-sent {}
 
-.mail-sidebar-income {
-    min-width: 10vw;
-}
+.mail-sidebar-income {}
 
-.mail-sidebar-marked {
-    min-width: 10vw;
-}
+.mail-sidebar-marked {}
 
-.mail-sidebar-unread {
-    min-width: 10vw;}
+.mail-sidebar-unread {}
 
-.mail-sidebar-read {
-    min-width: 10vw;
+.mail-sidebar-read {}
+
+.mail-sidebar-all,
+.mail-sidebar-sent,
+.mail-sidebar-income,
+.mail-sidebar-marked,
+.mail-sidebar-unread,
+.mail-sidebar-read,
+.mail-sidebar-trash {
+} */
+
+
+.mail-sidebar-all:hover,
+.mail-sidebar-sent:hover,
+.mail-sidebar-income:hover,
+.mail-sidebar-marked:hover,
+.mail-sidebar-unread:hover,
+.mail-sidebar-read:hover,
+.mail-sidebar-trash:hover {
+    background-color: transparent;
+    font-weight: 600;
 }
