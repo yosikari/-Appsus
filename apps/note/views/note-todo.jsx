@@ -92,9 +92,9 @@ export function NoteTodo(props) {
     ev.preventDefault()
     !noteToEdit.id && props.handleCard(false)
     console.log(noteToEdit)
-    noteService.save(noteToEdit).then(() => props.loadNotes())
+    noteService.save(noteToEdit).then(() => (props.loadNotes) && props.loadNotes()).then(() => navigate('/note'))
     // showSuccessMsg('note saved!')
-    navigate('/note')
+    // navigate('/note')
   }
   return <div className="note-input-txt-card">
     <form className="note-add-card" onSubmit={onSaveNote}>

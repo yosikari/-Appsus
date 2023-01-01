@@ -62,9 +62,9 @@ export function NoteTxt(props) {
   function onSaveNote(ev) {
     ev.preventDefault()
     !noteToEdit.id && props.handleCard(false)
-    noteService.save(noteToEdit).then(() => props.loadNotes())
+    noteService.save(noteToEdit).then(() => (props.loadNotes) && props.loadNotes()).then(() => navigate('/note'))
     // showSuccessMsg('note saved!')
-    navigate('/note')
+
   }
 
   return <div className="note-input-txt-card">
