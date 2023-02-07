@@ -12,7 +12,7 @@
 
 <h3>Appsus-Mail</h3>
 
-<h4>Simple mail cradl app, the user can sent a new mail, filter his mail and delete mails.</h4>
+<h4>Simple mail CRUDL app, the user can sent a new mail, filter his mail and delete mails.</h4>
 
 <li>List: In the main view the user can see all his mail sent and received. when hovering over a mail the user can open it or delete it.</li>
 
@@ -49,7 +49,7 @@
 
 <h3>Appsus-Note</h3>
 
-<h4>Simple note cradl app, the user can create, edit or delete a note.</h4>
+<h4>Simple note CRUDL app, the user can create, update or delete a note.</h4>
 
 <img src="https://i.imagesup.co/images2/1d5a4fcf287fd85e20fc8321daa32780d5db6779.png" />
 
